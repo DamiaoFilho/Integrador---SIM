@@ -16,7 +16,6 @@ body{
   color: #FFFFFF;
   min-height: 100vh;
   margin: 0;
-  background-color: #141924;
 }
 .alert-debug {
   color: black;
@@ -113,6 +112,13 @@ nav{
   height: 70px;
   color: black;
 }
+.navbarhori h1{
+  color: black;
+  font-weight: bold;
+}
+.navbarhori p{
+  color: black
+}
 
 .horititle{
   margin-left: 24px;
@@ -193,6 +199,7 @@ footer{
 
 footer p{
   margin-bottom: 0;
+  font-weight: bold;
 }
 
 .copyright{
