@@ -1,0 +1,9 @@
+.instrument-item{
+    display: flex;
+    align-items: center;
+}
+
+.instrument-item img{
+    width: 140px;
+    height: 135px;
+}

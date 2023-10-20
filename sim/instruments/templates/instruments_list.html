@@ -1,0 +1,33 @@
+{% extends "pages/list.html" %}
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'instruments\instruments.css' %}">
+{% endblock %}
+
+{% block page_name %}
+Instrumentos
+{% endblock %}
+
+{% block content %}
+{{ block.super }}
+<div class="row">
+    <section class="col">
+        <div class="instrument-item card" style="width: 18rem; display: flex;">
+            <div>
+                <img src="{% static 'images/instruments/baixo_usado.webp' %}" alt="">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+{% endblock %}
