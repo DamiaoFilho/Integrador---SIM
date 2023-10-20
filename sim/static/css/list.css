@@ -47,7 +47,7 @@
     align-items: center;
     justify-content: space-between;
     background-color: var(--detail-color);
-    width: 125px;
+    width: 123px;
     height: 44px;
     border-radius: 4px;
 }
@@ -59,6 +59,6 @@
 .button-content{
     width: 100%;
     display: flex;
-    gap: 8px;
-    margin-left: 4px;
+    justify-content: center;
+    gap: 6px;
 }
