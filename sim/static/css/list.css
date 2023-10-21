@@ -60,5 +60,12 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 6px;
+}
+.add-button i{
+    font-size: 24px;
+}
+.add-button p{
+    padding-bottom: 2px;
 }

@@ -4,6 +4,7 @@
 {% block css %}
 {{ block.super }}
 <link rel="stylesheet" href="{% static 'instruments\instruments.css' %}">
+<link rel="stylesheet" href="{% static 'instruments\instrument_cards.css' %}">
 {% endblock %}
 
 {% block page_name %}
@@ -12,24 +13,89 @@ Instrumentos
 
 {% block content %}
 {{ block.super }}
-<div class="list-content">
+<div class="list-content list-content-main">
     <div class="row">
-        <section class="col">
-            <div class="instrument-item card" style="width: 18rem; display: flex;">
-                <div>
-                    <img src="{% static 'images/instruments/baixo_usado.webp' %}" alt="">
+        <section class="instrument-card col-md-4">
+            <div class="instrument-card-img">
+                <img src="{% static 'images\instruments\baixo_usado.webp' %}" alt="">
+            </div>
+            <div class="card-info">
+                <div class="card-title">
+                    <p>Baixo Eletríco 4 Cordas</p>
                 </div>
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
+                <div class="card-brand">
+                    <p>Marca: Tagima</p>
+                </div>
+                <div class="card-status status-unavaible">
+                    <p>Indisponível</p>
+                </div>
+                <div class="card-buttons">
+                    <div class="delete-button">
+                        <a href=""><i class="bi bi-trash-fill"></i></a>
+                    </div>
+                    <div class="actions-buttons">
+                        <a href="">
+                            <div class="card-button">
+                                <p>Atualizar</p>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div class="card-button">
+                                <p>Emprestar</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="instrument-card col-md-4">
+            <div class="instrument-card-img">
+                <img src="{% static 'images\instruments\baixo_usado.webp' %}" alt="">
+            </div>
+            <div class="card-info">
+                <div class="card-title">
+                    <p>Baixo Eletríco 4 Cordas</p>
+                </div>
+                <div class="card-brand">
+                    <p>Marca: Tagima</p>
+                </div>
+                <div class="card-status status-unavaible">
+                    <p>Indisponível</p>
+                </div>
+                <div class="card-buttons">
+                    <div class="delete-button">
+                        <a href=""><i class="bi bi-trash-fill"></i></a>
+                    </div>
+                    <div class="actions-buttons">
+                        <a href="">
+                            <div class="card-button">
+                                <p>Atualizar</p>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div class="card-button">
+                                <p>Emprestar</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
     </div>
 </div>
-
+<div class="list-content">
+    <div class="row pagination">
+        <div class="pagination-items">
+            <div class="left-arrow"><i class="bi bi-caret-left-fill"></i></div>
+            <div class="pages">
+                <p class="selected">1</p>
+                <p>2</p>
+                <p>3</p>
+                <p>4</p>
+            </div>
+            <div class="right-arrow"><i class="bi bi-caret-right-fill"></i></div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
