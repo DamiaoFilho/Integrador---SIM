@@ -12,9 +12,8 @@
 
 .list-content{
     margin-top: 32px;
-}
-.list-content-main{
-    margin-right: 8px;
+    display: flex;
+    justify-content: center;
 }
 
 /*pagination*/
@@ -61,4 +60,8 @@
     background-color: #3C50E0;
     border-radius: 4px;
     width: 100px;
+}
+
+.actions-buttons a{
+    text-decoration: none;
 }

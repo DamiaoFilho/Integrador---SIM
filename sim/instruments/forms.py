@@ -1,18 +1,7 @@
 from django import forms
-from crispy_forms.layout import (
-    HTML,
-    ButtonHolder,
-    Column,
-    Div,
-    Fieldset,
-    Layout,
-    Row,
-    Submit,
-)
-
 
 class InstrumentForm(forms.Form):
-    image = forms.FileField(
+    image = forms.ImageField(
         label="Imagem",
         widget=forms.FileInput(
             attrs={"class": "col"}
@@ -37,9 +26,15 @@ class InstrumentForm(forms.Form):
         label="Categoria",
     )
     status = forms.CharField(
-        label="Estatus",
+        label="Status",
     )
-    documents1 = forms.FileField()
-    documents2 = forms.FileField()
+    documents1 = forms.FileField(
+        label="Anexo 1",
+        required=False,
+    )
+    documents2 = forms.FileField(
+        label="Anexo 2",
+        required=False,
+    )
     
    

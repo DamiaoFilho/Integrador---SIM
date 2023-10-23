@@ -5,7 +5,7 @@
     padding: 0;
     margin-left: 8px;
     margin-bottom: 16px;
-    width: 425px;
+    width: 415px;
 }
 .instrument-card i{
     color: red;
@@ -18,7 +18,7 @@
     font-size: 14px;
 }
 .status-avaible{
-    background-color: red;
+    background-color: #2B9F4B;
     border-radius: 4px;
     font-weight: bold;
     font-size: 14px;
@@ -58,7 +58,7 @@
     margin-top: auto;
     margin-bottom: 12px;
     display: flex;
-    width: 250px;
+    width: 240px;
     gap: 12px;
     justify-content: space-between;
 }

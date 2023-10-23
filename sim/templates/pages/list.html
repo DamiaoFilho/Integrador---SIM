@@ -7,22 +7,24 @@
 {% endblock %}
 
 {% block content %}
-    <div class="list-buttons row">
+    <div class="list-buttons">
         <div class="search col-md-3">
             <div class="search-header">
                 <i class="bi bi-search"></i>
                 <p>Procurar...</p>
             </div>
         </div>
-        <section class="col-3 offset-2">
+        <section>
             <div class="button">
-                <div class="button-content">
-                    <i class="bi bi-funnel-fill"></i>
-                    <p>Filtros</p>
-                </div>
+                <a class="button-content" href="">
+                    <div class="button-content">
+                        <i class="bi bi-funnel-fill"></i>
+                        <p>Filtros</p>
+                    </div>
+                </a>
             </div>
             <div class="button add-button">
-                <a href="{% url 'instrumentAdd' %}">
+                <a class="button-content" href="{% url 'instrumentAdd' %}">
                     <div class="button-content">
                         <i class="bi bi-plus"></i>
                         <p>Adicionar</p>

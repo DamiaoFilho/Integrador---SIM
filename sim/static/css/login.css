@@ -1,0 +1,119 @@
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+main{
+    height: 100%;
+}
+
+
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: auto;
+    gap: 92px;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.login-left{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+}
+.header{
+    margin: 0 auto 0 auto;
+}
+.sub{
+    margin: 0 auto 0 auto;
+}
+.sub-images{
+    margin: 0 auto 0 auto;
+}
+.header p{
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.sub p{
+    color: #64748B;
+}
+
+.login-form{
+    margin-right: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.half-width-div {
+    width: 50%;
+    height: 100vh; 
+}
+
+
+.line{
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: rgba(128, 128, 128, 0.6);
+    transform: translateX(-50%);
+}
+
+
+#guitar{
+    object-fit: cover;
+    width: 180px;
+    height: 220px;
+}
+
+#person{
+    height: 190px;
+    width: 65px;
+}
+
+
+#loginbtn{
+    width: 100%;
+}
+
+.card-footer{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.content p{
+    margin-bottom: 0;
+}
+
+#suapbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E2E8F0;
+}
+#suapbtn p{
+    color: #64748B;
+}
+#suapbtn img{
+    width: 100px;
+    height: 35px;
+}
+
+#signup{
+    margin: auto;
+}
+#signup a{
+    text-decoration: none;
+}

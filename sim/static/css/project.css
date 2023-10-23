@@ -2,11 +2,11 @@
 
 :root{
   --primary-bg-color: #1C2434;
+  --secondary-bg-color: #3056D3;
 }
 
 *{
   font-family: 'Poppins', sans-serif;
-  color: white;
 }
 p{
   margin-bottom: 0;
@@ -35,7 +35,7 @@ body{
   background-color: var(--primary-bg-color);
   position: fixed;
   top: 0;
-  width: 240px;
+  width: 200px;
   align-items: flex-start;
   height: 100%;
   display: flex;
@@ -73,7 +73,9 @@ nav{
 .side-item{
   width: 100%;
 }
-
+.navbar-items{
+  margin-right: 32px;
+}
 .nav-title{
   margin: auto;
   gap: 8px;
@@ -109,8 +111,8 @@ nav{
 
 
 .navbarhori{
-  margin-left: 240px;
-  border-bottom: 2px solid grey;
+  margin-left: 200px;
+  border-bottom: 2px solid var(--primary-bg-color);
   height: 70px;
   color: black;
 }
@@ -129,7 +131,7 @@ nav{
 }
 
 main{
-  margin-left: 240px;
+  margin-left: 200px;
 }
 
 .nav-sub{
@@ -195,7 +197,7 @@ footer{
   align-items: center;
   background-color: var(--primary-bg-color);
   height: 60px;
-  margin-left: 240px;
+  margin-left: 200px;
   margin-top: auto;
   position: sticky;
   bottom: 0;
@@ -216,3 +218,16 @@ footer p{
   margin-right: 24px;
 }
 
+
+.card-header{
+  background-color: var(--primary-bg-color);
+  border-radius: 4px 4px 0 0;
+}
+.card-header p{
+  color: white;
+}
+
+
+.nav-sub li{
+  margin-right: 32px;
+}

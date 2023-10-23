@@ -7,8 +7,8 @@ Adicionar
 {% endblock %}
 
 {% block content %}
-<div class="card" style="margin-top: 32px;">
-  <form class="form" method="post">
+<div class="card" style="margin-top: 32px; margin-bottom: 32px;">
+  <form class="form create" method="post">
     {% block form_content %}
     {% csrf_token %}
     <div class="card-body border-top p-9">
@@ -16,8 +16,8 @@ Adicionar
     </div>
     {% endblock %}
     <div class="card-footer d-flex justify-content-end py-6 px-9">
-      <button type="reset" class="btn btn-light btn-active-light-primary me-2">Descartar</button>
-      <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Salvar</button>
+      <button type="reset" class="btn btn-light btn-active-light-primary btn-lg me-2">Descartar</button>
+      <button type="submit" class="btn btn-primary btn-lg" id="kt_account_profile_details_submit">Salvar</button>
     </div>
   </form>
 </div>
@@ -32,3 +32,4 @@ Adicionar
 {{ block.super }}
 {{ form.media.js }}
 {% endblock %}
+

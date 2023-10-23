@@ -3,9 +3,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import DetailView, RedirectView, UpdateView
-
+from django.views.generic import DetailView, RedirectView, UpdateView, FormView
 User = get_user_model()
+
+from .forms import UserSignIn
+
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
@@ -41,3 +43,8 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 
 
 user_redirect_view = UserRedirectView.as_view()
+
+class UserLoginView(FormView):
+    form_class = UserSignIn
+    template_name="account/login.html"
+    success_url="/"
