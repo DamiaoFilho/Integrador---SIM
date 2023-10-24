@@ -28,9 +28,14 @@ main{
     flex-direction: column;
     gap: 16px;
     justify-content: center;
+    text-decoration: none;
 }
 .header{
     margin: 0 auto 0 auto;
+}
+.header p{
+    color: black;
+    font: bold;
 }
 .sub{
     margin: 0 auto 0 auto;

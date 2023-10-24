@@ -43,16 +43,42 @@ class UserSocialSignupForm(SocialSignupForm):
 
 class UserSignIn(forms.Form):
     email = forms.EmailField(
-        label="Email", 
+        label="Login", 
         required=False,
         widget=forms.EmailInput(
-            attrs={'placeholder': 'Digite seu email...'}
+            attrs={'placeholder': 'Matricula ou Email'}
         )
     )
     password = forms.CharField(
         label="Senha",
         required=False,
         widget=forms.PasswordInput(
-            attrs={'placeholder': 'Digita sua senha...'}
+            attrs={'placeholder': 'Digite sua senha'}
         )
+    )
+
+class UserSignUp(forms.Form):
+    name = forms.CharField(
+        label="Nome",
+        widget=forms.TextInput()
+    )
+    surname = forms.CharField(
+        label="Sobrenome",
+        widget=forms.TextInput()
+    )
+    registration = forms.IntegerField(
+        label="Matrícula",
+        widget=forms.NumberInput()
+    )
+    email = forms.EmailField(
+        label="Email",
+        widget=forms.EmailInput()
+    )
+    number = forms.IntegerField(
+        label="Número de telefone",
+        widget=forms.NumberInput()
+    )
+    password = forms.CharField(
+        label="Senha",
+        widget=forms.PasswordInput()
     )

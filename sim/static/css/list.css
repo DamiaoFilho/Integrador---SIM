@@ -20,7 +20,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid var(--detail-color);
+    border: 1px solid black;
     width: 240px;
     height: 44px;
     border-radius: 4px;
@@ -70,4 +70,8 @@
 }
 .add-button p{
     padding-bottom: 2px;
+}
+
+.row{
+    max-width: 1269px;
 }

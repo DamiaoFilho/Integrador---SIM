@@ -27,7 +27,7 @@
 .pagination-items{
     width: 150px;
     display: flex;
-    background-color: grey;
+    background-color: #1C2434;
     border-radius: 4px;
     justify-content: space-around;
     gap: 8px;
@@ -64,4 +64,15 @@
 
 .actions-buttons a{
     text-decoration: none;
+}
+
+.modalbtn{
+    padding: 0;
+}
+
+.modal p{
+    color: black;
+}
+.modal h1{
+    color: black;
 }

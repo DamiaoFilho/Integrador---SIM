@@ -1,5 +1,5 @@
 .instrument-card{
-    border: 2px solid grey;
+    border: 1px solid black;
     display: flex;
     border-radius: 4px;
     padding: 0;
@@ -66,4 +66,11 @@
 .card-button p{
     color: white;
     font-weight: bold;
+}
+
+
+.instrument-card-img img{
+    width: 150px;
+    height: 200px;
+    object-fit: fill;
 }

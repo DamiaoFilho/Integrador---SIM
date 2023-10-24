@@ -6,11 +6,12 @@ from django.views import defaults as default_views
 from django.views.generic import TemplateView
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
-from sim.users.views import UserLoginView
+from sim.users.views import UserLoginView, UserCreateView
 urlpatterns = [
     path("", TemplateView.as_view(template_name="instruments_list.html"), name="home"),
     path("about/", TemplateView.as_view(template_name="pages/about.html"), name="about"),
     path("login/", UserLoginView.as_view(), name="login"),
+    path("signup/", UserCreateView.as_view(), name="signup"),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management

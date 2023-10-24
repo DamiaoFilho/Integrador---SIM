@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-
+{% load static %}
 
 {% block page_name %}
 Adicionar
@@ -16,8 +16,8 @@ Adicionar
     </div>
     {% endblock %}
     <div class="card-footer d-flex justify-content-end py-6 px-9">
-      <button type="reset" class="btn btn-light btn-active-light-primary btn-lg me-2">Descartar</button>
-      <button type="submit" class="btn btn-primary btn-lg" id="kt_account_profile_details_submit">Salvar</button>
+      <button type="reset" class="btn btn-light btn-active-light-primary btn-md me-2">Descartar</button>
+      <button type="submit" class="btn btn-primary btn-md" id="kt_account_profile_details_submit">Salvar</button>
     </div>
   </form>
 </div>
@@ -26,6 +26,7 @@ Adicionar
 {% block css %}
 {{ block.super }}
 {{ form.media.css }}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
 {% endblock %}
 
 {% block javascript %}

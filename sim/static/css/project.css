@@ -43,7 +43,7 @@ body{
 }
 
 .sidebar-header h1{
-  font-size: 16px;
+  font-size: 14px;
   text-align: left;
   margin-bottom: 0px;
   font-weight: bold;
@@ -129,6 +129,9 @@ nav{
 .horititle{
   margin-left: 24px;
 }
+.horititle h1{
+  font-size: 20px;
+}
 
 main{
   margin-left: 200px;
@@ -141,7 +144,12 @@ main{
 .nav-sub a{
   text-decoration: none;
 }
-
+.nav-sub ul{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0;
+}
 
 .navbarhori{
   display: flex;
@@ -206,6 +214,7 @@ footer{
 footer p{
   margin-bottom: 0;
   font-weight: bold;
+  font-size: 14px;
 }
 
 .copyright{
@@ -228,6 +237,3 @@ footer p{
 }
 
 
-.nav-sub li{
-  margin-right: 32px;
-}
