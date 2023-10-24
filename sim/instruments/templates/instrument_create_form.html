@@ -1,0 +1,17 @@
+{% extends "pages/form.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_name %}
+Instrumentos - Adicionar
+{% endblock %}
+
+
+{% block form_content %}
+    {% csrf_token %}
+    <div class="card-header">
+        <p>Dados Básicos</p>
+    </div>
+    <div class="card-body border-top p-9">
+      {% crispy form %}
+    </div>
+{% endblock %}

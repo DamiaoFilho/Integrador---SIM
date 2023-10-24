@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+<link href="{% static 'css/list.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+    <div class="list-buttons">
+        <div class="search col-md-3">
+            <div class="search-header">
+                <i class="bi bi-search"></i>
+                <p>Procurar...</p>
+            </div>
+        </div>
+        <section>
+            <div class="button">
+                <a class="button-content" href="">
+                    <div class="button-content">
+                        <i class="bi bi-funnel-fill"></i>
+                        <p>Filtros</p>
+                    </div>
+                </a>
+            </div>
+            <div class="button add-button">
+                <a class="button-content" href="{% url 'instrumentAdd' %}">
+                    <div class="button-content">
+                        <i class="bi bi-plus"></i>
+                        <p>Adicionar</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </div>
+{% endblock %}
