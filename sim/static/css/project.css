@@ -5,9 +5,6 @@
   --secondary-bg-color: #3056D3;
 }
 
-*{
-  font-family: 'Poppins', sans-serif;
-}
 p{
   margin-bottom: 0;
 }
@@ -206,8 +203,7 @@ footer{
   background-color: var(--primary-bg-color);
   height: 60px;
   margin-left: 200px;
-  margin-top: auto;
-  position: sticky;
+  margin-top: 32px;
   bottom: 0;
 }
 
@@ -235,5 +231,4 @@ footer p{
 .card-header p{
   color: white;
 }
-
 
