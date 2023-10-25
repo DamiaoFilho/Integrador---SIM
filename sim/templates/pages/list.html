@@ -24,7 +24,9 @@
                 </a>
             </div>
             <div class="button add-button">
+                {% block addLink %}
                 <a class="button-content" href="{% url 'instrumentAdd' %}">
+                {% endblock addLink %}
                     <div class="button-content">
                         <i class="bi bi-plus"></i>
                         <p>Adicionar</p>

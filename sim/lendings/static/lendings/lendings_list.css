@@ -68,3 +68,7 @@ td.instrumentos {
 .page-buttons button:hover {
     background-color: #45a049;
 }
+
+.center-content{
+    margin-top: 32px;
+}

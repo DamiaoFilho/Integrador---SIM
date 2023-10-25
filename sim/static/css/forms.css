@@ -26,3 +26,14 @@
     background-color: #1c243430;
     color: white;
 }
+
+.form-select{
+    background-color: #ffffff1d;
+    border: none;
+    color: white;
+}
+
+.form-select:focus{
+    background-color: #1c243430;
+    color: white;
+}

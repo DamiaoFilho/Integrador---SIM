@@ -5,6 +5,11 @@
   --secondary-bg-color: #3056D3;
 }
 
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+
 p{
   margin-bottom: 0;
 }
@@ -13,8 +18,8 @@ body{
   flex-direction: column;
   background-color: #FFFFFF;
   color: #FFFFFF;
-  min-height: 100vh;
   margin: 0;
+  height: 100vh;
 }
 .alert-debug {
   color: black;
@@ -132,6 +137,7 @@ nav{
 
 main{
   margin-left: 200px;
+  min-height: 100vh;
 }
 
 .nav-sub{
@@ -202,8 +208,10 @@ footer{
   align-items: center;
   background-color: var(--primary-bg-color);
   height: 60px;
-  margin-left: 200px;
-  margin-top: 32px;
+  margin-top: auto;
+  padding: 10px;
+  width: 100%;
+  position: relative;
   bottom: 0;
 }
 
@@ -231,4 +239,6 @@ footer p{
 .card-header p{
   color: white;
 }
-
+.wrapper{
+  flex: 1;
+}
