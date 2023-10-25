@@ -1,0 +1,70 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Qubo, Arial, sans-serif;
+    font-size: 16px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    position: relative; /* Para posicionar as linhas corretamente */
+    line-height: 4; /* Aumenta o espaçamento entre as linhas */
+}
+
+/* Adicione linhas horizontais nas células da tabela, exceto a última linha */
+tr:not(:last-child) td::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: #000;
+}
+
+td.aluno {
+    color: black;
+}
+
+td.matricula {
+    color: black;
+}
+
+td.retirada,
+td.devolucao {
+    color: rgb(18, 194, 71);
+}
+
+td.instrumentos {
+    color: rgb(53, 121, 209);
+}
+
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 125px;
+}
+
+.page-buttons {
+    margin-top: 20px;
+}
+
+.page-buttons button {
+    background-color: #46b449;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.page-buttons button:hover {
+    background-color: #45a049;
+}
