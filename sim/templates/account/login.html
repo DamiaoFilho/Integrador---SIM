@@ -26,26 +26,27 @@
           <img id="person" src="{% static 'images/login/person.png' %}" alt="">
         </div>
       </a>
-      <div class="line"></div>
-      <div class="login-form half-width-div">
-          <form class="form" method="post">
-            {% block form_content %}
-            {% csrf_token %}
-            {% crispy form %}
-            <div class="card-footer d-flex">
-              <a id="loginbtn" href="{% url 'home' %}" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Entrar</a>
-              <a id="suapbtn" href="#" class="btn btn-primary btn-md active" role="button" aria-disabled="true">
-                <img src="{% static 'images/logos/suap.png'%}" alt="">
-                <span><p>Login com SUAP</p></span>
-              </a>
-              <div id="signup">
-                <span>
-                  <p>Não tem uma conta?<a href="{% url 'signup' %}"> Cadastre-se</a></p>
-                </span>
+      <div class="form-content half-width-div">
+        <div class="login-form">
+            <form class="form" method="post">
+              {% block form_content %}
+              {% csrf_token %}
+              {% crispy form %}
+              <div class="card-footer d-flex">
+                <a id="loginbtn" href="{% url 'home' %}" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Entrar</a>
+                <a id="suapbtn" href="#" class="btn btn-primary btn-md active" role="button" aria-disabled="true">
+                  <img src="{% static 'images/logos/suap.png'%}" alt="">
+                  <span><p>Login com SUAP</p></span>
+                </a>
+                <div id="signup">
+                  <span>
+                    <p>Não tem uma conta?<a href="{% url 'signup' %}"> Cadastre-se</a></p>
+                  </span>
+                </div>
               </div>
-            </div>
-            {% endblock %}
-          </form>
+              {% endblock %}
+            </form>
+          </div>
         </div>
       </div>
     </div>
