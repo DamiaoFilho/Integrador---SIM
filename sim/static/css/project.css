@@ -115,17 +115,18 @@ nav{
 .navbarhori{
   margin-left: 200px;
   border-bottom: 2px solid var(--primary-bg-color);
-  height: 70px;
+  height: 150px;
+  background-color: var(--primary-bg-color);
   color: black;
 }
 .navbarhori h1{
-  color: black;
+  color: white;
   font-weight: bold;
   font-size: 26px;
   margin-bottom: 0;
 }
 .navbarhori p{
-  color: black
+  color: white;
 }
 
 .horititle{

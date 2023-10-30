@@ -3,6 +3,8 @@ table {
     border-collapse: collapse;
     font-family: Qubo, Arial, sans-serif;
     font-size: 16px;
+    border-radius: 8px;
+    background-color: #1C2434;
 }
 
 th, td {
@@ -23,12 +25,14 @@ tr:not(:last-child) td::after {
     background: #000;
 }
 
-td.aluno {
-    color: black;
+td.aluno{
+    color: white;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
 }
 
 td.matricula {
-    color: black;
+    color: white;
 }
 
 td.retirada,
@@ -38,6 +42,8 @@ td.devolucao {
 
 td.instrumentos {
     color: rgb(53, 121, 209);
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
 }
 
 .center-content {
@@ -71,4 +77,9 @@ td.instrumentos {
 
 .center-content{
     margin-top: 32px;
+}
+
+.table-header{
+    background-color: #1C2434;
+    border-radius: 8px;
 }

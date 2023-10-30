@@ -4,6 +4,7 @@
 {{ block.super }}
 <link rel="stylesheet" href="{% static 'lendings/lendings_list.css' %}">
 
+{% endblock %}
 
 {% block addLink %}
 
@@ -11,13 +12,13 @@
 
 {% endblock %}
 
-
+{% block page_name %}
+Empréstimos
 {% endblock %}
+
+
 {% block content %}
 {{ block.super }}
-
-
-
     <div class="center-content">
         
         

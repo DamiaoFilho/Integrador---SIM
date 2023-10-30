@@ -18,41 +18,7 @@
 
 /*pagination*/
 
-.pagination{
-    border-radius: 4px;
-    display: flex;
-    justify-content: center;
-}
 
-.pagination-items{
-    width: 150px;
-    display: flex;
-    background-color: #1C2434;
-    border-radius: 4px;
-    justify-content: space-around;
-    gap: 8px;
-}
-
-.selected{
-    color: #3C50E0;
-}
-
-.left-arrow i{
-    font-size: 20px;
-    color: #3C50E0;
-}
-.right-arrow i{
-    font-size: 20px;
-    color: #3C50E0;
-}
-
-.pages{
-    display: flex;
-    gap: 8px;
-}
-.pages p{
-    font-size: 20px;
-}
 
 .card-button{
     display: flex;
