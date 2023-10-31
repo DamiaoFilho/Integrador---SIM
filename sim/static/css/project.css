@@ -9,7 +9,9 @@
   box-sizing: border-box;
   margin: 0;
 }
-
+a{
+  color: white;
+}
 p{
   margin-bottom: 0;
 }
@@ -113,6 +115,7 @@ nav{
 
 
 .navbarhori{
+  padding: 10px 0 10px 0;
   margin-left: 200px;
   border-bottom: 2px solid var(--primary-bg-color);
   height: 150px;
@@ -242,4 +245,19 @@ footer p{
 }
 .wrapper{
   flex: 1;
+}
+.sub-menu{
+  display: none;
+  transition: 0.7s;
+}
+
+.down ul{
+  display: block;
+}
+.arrow-sub-menu{
+  transition: 0.4s;
+}
+.down .arrow-sub-menu{
+  transform: rotate(180deg);
+  transition: 0.4s;
 }

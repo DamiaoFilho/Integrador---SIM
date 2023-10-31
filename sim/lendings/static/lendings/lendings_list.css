@@ -1,7 +1,6 @@
 table {
     width: 100%;
     border-collapse: collapse;
-    font-family: Qubo, Arial, sans-serif;
     font-size: 16px;
     border-radius: 8px;
     background-color: #1C2434;
@@ -35,9 +34,11 @@ td.matricula {
     color: white;
 }
 
-td.retirada,
+td.retirada{
+    color: rgba(39, 234, 97, 0.808);
+}
 td.devolucao {
-    color: rgb(18, 194, 71);
+    color: rgba(255, 0, 0, 0.712);
 }
 
 td.instrumentos {
@@ -77,6 +78,10 @@ td.instrumentos {
 
 .center-content{
     margin-top: 32px;
+}
+
+td{
+    text-align: center;
 }
 
 .table-header{

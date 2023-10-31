@@ -37,6 +37,7 @@
     <!-- Your stuff: Third-party javascript libraries go here -->
     <!-- place project specific Javascript in this file -->  
     <script defer src="{% static 'js/project.js' %}"></script>
+    <script defer src="{% static 'js/main.js' %}"></script>
     {% endblock javascript %}
 
 </head>
@@ -73,15 +74,16 @@
               </div>
             </a>
           </li>
-          <li>
-              <a class="nav-link" href="{% url 'lendings:lendingslist' %}">
-                <div>
+          <li class="item-menu">
+            <a href="#" class="item-menu-link">
                   <i class="bi bi-calendar4-week"></i>
-                </div>
-                <div>
-                  Empréstimos
-                </div>
-              </a>
+                  <Span>Empréstimos</Span>
+                  <i class="bi bi-caret-down-fill arrow-sub-menu"></i>
+            </a>
+            <ul class="sub-menu">
+              <a href="{% url 'lendings:lendingslist' %}">Lista</a>
+              <a href="#">Solicitações</a>
+            </ul>
           </li>
         </ul>
       </div>
