@@ -5,6 +5,13 @@
   --secondary-bg-color: #3056D3;
 }
 
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+a{
+  color: white;
+}
 p{
   margin-bottom: 0;
 }
@@ -13,8 +20,8 @@ body{
   flex-direction: column;
   background-color: #FFFFFF;
   color: #FFFFFF;
-  min-height: 100vh;
   margin: 0;
+  height: 100vh;
 }
 .alert-debug {
   color: black;
@@ -108,19 +115,21 @@ nav{
 
 
 .navbarhori{
+  padding: 10px 0 10px 0;
   margin-left: 200px;
   border-bottom: 2px solid var(--primary-bg-color);
-  height: 70px;
+  height: 150px;
+  background-color: var(--primary-bg-color);
   color: black;
 }
 .navbarhori h1{
-  color: black;
+  color: white;
   font-weight: bold;
   font-size: 26px;
   margin-bottom: 0;
 }
 .navbarhori p{
-  color: black
+  color: white;
 }
 
 .horititle{
@@ -132,6 +141,7 @@ nav{
 
 main{
   margin-left: 200px;
+  min-height: 100vh;
 }
 
 .nav-sub{
@@ -202,8 +212,10 @@ footer{
   align-items: center;
   background-color: var(--primary-bg-color);
   height: 60px;
-  margin-left: 200px;
-  margin-top: 32px;
+  margin-top: auto;
+  padding: 10px;
+  width: 100%;
+  position: relative;
   bottom: 0;
 }
 
@@ -231,4 +243,21 @@ footer p{
 .card-header p{
   color: white;
 }
+.wrapper{
+  flex: 1;
+}
+.sub-menu{
+  display: none;
+  transition: 0.7s;
+}
 
+.down ul{
+  display: block;
+}
+.arrow-sub-menu{
+  transition: 0.4s;
+}
+.down .arrow-sub-menu{
+  transform: rotate(180deg);
+  transition: 0.4s;
+}

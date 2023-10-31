@@ -1,0 +1,90 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: #1C2434;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    position: relative; /* Para posicionar as linhas corretamente */
+    line-height: 4; /* Aumenta o espaçamento entre as linhas */
+}
+
+/* Adicione linhas horizontais nas células da tabela, exceto a última linha */
+tr:not(:last-child) td::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: #000;
+}
+
+td.aluno{
+    color: white;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+td.matricula {
+    color: white;
+}
+
+td.retirada{
+    color: rgba(39, 234, 97, 0.808);
+}
+td.devolucao {
+    color: rgba(255, 0, 0, 0.712);
+}
+
+td.instrumentos {
+    color: rgb(53, 121, 209);
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 125px;
+}
+
+.page-buttons {
+    margin-top: 20px;
+}
+
+.page-buttons button {
+    background-color: #46b449;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.page-buttons button:hover {
+    background-color: #45a049;
+}
+
+.center-content{
+    margin-top: 32px;
+}
+
+td{
+    text-align: center;
+}
+
+.table-header{
+    background-color: #1C2434;
+    border-radius: 8px;
+}
