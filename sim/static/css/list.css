@@ -3,9 +3,7 @@
 }
 
 .list-buttons{
-    margin-top: 16px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 32px 16px 0px 16px;
     display: flex;
     justify-content: space-between;
 }
@@ -23,7 +21,7 @@
     border: 1px solid black;
     width: 240px;
     height: 44px;
-    border-radius: 4px;
+    border-radius: 16px;
 }
 
 .search p{
@@ -49,7 +47,7 @@
     background-color: var(--detail-color);
     width: 123px;
     height: 44px;
-    border-radius: 4px;
+    border-radius: 14px;
 }
 
 .button i{
@@ -83,7 +81,7 @@
 
 
 .pagination{
-    border-radius: 4px;
+    border-radius: 16px;
     display: flex;
     justify-content: center;
 }
@@ -91,23 +89,25 @@
 .pagination-items{
     width: 150px;
     display: flex;
-    background-color: #1C2434;
-    border-radius: 4px;
+    background-color: #3056d320;
+    border-radius: 16px;
     justify-content: space-around;
     gap: 8px;
 }
-
-.selected{
-    color: #3C50E0;
+.pagination-items p{
+    color: black;
+}
+#page-selected{
+    color: #3056D3;
 }
 
 .left-arrow i{
     font-size: 20px;
-    color: #3C50E0;
+    color: #3056D3;
 }
 .right-arrow i{
     font-size: 20px;
-    color: #3C50E0;
+    color: #3056D3;
 }
 
 .pages{

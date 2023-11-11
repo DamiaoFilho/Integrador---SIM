@@ -33,7 +33,7 @@
               {% csrf_token %}
               {% crispy form %}
               <div class="card-footer d-flex">
-                <a id="loginbtn" href="{% url 'home' %}" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Entrar</a>
+                <a id="loginbtn" href="{% url 'home' %}" class="btn btn-success btn-md active" role="button" aria-pressed="true">Entrar</a>
                 <a id="suapbtn" href="#" class="btn btn-primary btn-md active" role="button" aria-disabled="true">
                   <img src="{% static 'images/logos/suap.png'%}" alt="">
                   <span><p>Login com SUAP</p></span>

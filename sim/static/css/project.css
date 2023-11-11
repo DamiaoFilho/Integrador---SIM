@@ -1,7 +1,7 @@
 /* These styles are generated from project.scss. */
 
 :root{
-  --primary-bg-color: #1C2434;
+  --primary-bg-color: #3056D3;
   --secondary-bg-color: #3056D3;
 }
 
@@ -19,7 +19,7 @@ p{
 body{
   display: flex;
   flex-direction: column;
-  background-color: #FFFFFF;
+  background-color: white;
   color: #FFFFFF;
   margin: 0;
   height: 100vh;
@@ -54,11 +54,15 @@ body{
   font-weight: bold;
 }
 
+.sidebar-header{
+  display: flex;
+  height: 78px;
+  align-items: center;
+  justify-content: center;
+}
+
 .sidebar-header div{
   margin: 8px;
-}
-.sidebar-header a{
-  margin-bottom: 24px;
 }
 .sidebar-header a{
   text-decoration: none;
@@ -68,6 +72,11 @@ body{
 }
 
 
+#logo{
+  background-color: white;
+  padding: 8px;
+  border-radius: 50%;
+}
 
 nav{
   width: 100%;
@@ -85,8 +94,9 @@ nav{
   margin: auto;
   gap: 8px;
   display: flex;
-  background-color: #333A48;
-  border-radius: 6px;
+  background-color: white;
+  border-radius: 16px;
+  margin-top: 24px;
   width: 80%;
   align-items: center;
   justify-content: center;
@@ -94,8 +104,13 @@ nav{
   margin-bottom: 12px;
 }
 .nav-title p{
-  color: #8A99AF;
+  color: black;
   margin-bottom: 0;
+  font-weight: bold;
+}
+.nav-title i{
+  color: black;
+  font-weight: bold;
 }
 
 .nav-items ul > li a{
@@ -117,13 +132,11 @@ nav{
 .navbarhori{
   padding: 10px 0 10px 0;
   margin-left: 200px;
-  border-bottom: 2px solid var(--primary-bg-color);
   height: 150px;
-  background-color: var(--primary-bg-color);
-  color: black;
+  color: #3056d320;
 }
 .navbarhori h1{
-  color: white;
+  color: black;
   font-weight: bold;
   font-size: 26px;
   margin-bottom: 0;
@@ -168,7 +181,10 @@ main{
 .user{
   display: flex;
   gap: 16px;
-  margin-right: 24px;
+  padding: 8px 24px 8px 12px;
+  background-color: #3056D3;
+  border-top-left-radius: 32px;
+  border-bottom-left-radius: 32px;
 }
 
 .name{
@@ -186,7 +202,7 @@ main{
 
 #function{
   font-size: 12px;
-  color: #637381;
+  color: 637381;
 }
 
 #profile img{

@@ -39,6 +39,10 @@ class LendingCreateForm(forms.Form):
         label="Data de Fim",
         widget=forms.DateInput(attrs={'type': 'date'})
     )
+    justify = forms.CharField(
+        label="Justificativa",
+        widget=forms.Textarea()
+    )
 
 
     helper = FormHelper()
@@ -52,6 +56,9 @@ class LendingCreateForm(forms.Form):
         ),
         Row(
             Column("password", css_class="col"),
+        ),
+        Row(
+            Column("justify", css_class="col")
         ),
         Row(
             Column("initDate", css_class="col-md-6"),
