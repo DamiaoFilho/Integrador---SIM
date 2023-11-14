@@ -1,0 +1,96 @@
+.center-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 32px;
+    background-color: #1C2434;
+    border-radius: 8px;
+}
+
+.soli-buttons{
+    display: flex;
+    margin: 8px;
+    margin-bottom: 32px;
+    gap: 16px;
+    justify-content: flex-end;
+}
+
+
+
+/* INSTRUMENT */
+
+.instrument-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.instrument-header img{
+    border-radius: 8px;
+    width: 150px;
+    height: 200px;
+    margin: 16px 16px 0 16px;
+}
+
+.instrument-content{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* STUDENT */
+
+.student-header{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+    width: 100%;
+    border-bottom: 2px solid black;
+}
+
+
+.student-sub{
+    text-align: center;
+}
+
+.student-header i{
+    font-size: 64px;
+}
+
+.main-review{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #ffffff1d;
+    margin: 32px;
+    border-radius: 8px;
+}
+
+.main-review span{
+    text-align: justify;
+    margin: 8px;
+}
+
+.duration{
+    display: flex;
+    justify-content: space-around;
+}
+
+.main-review p{
+    text-align: center;
+}
+
+#justify-text{
+    margin-bottom: 32px;
+}
+
+
+.center-content{
+    background-color: #a7a1da34;
+    color: black;
+}
+
+/* OTHER */

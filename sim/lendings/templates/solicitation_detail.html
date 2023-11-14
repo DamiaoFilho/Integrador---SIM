@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_name %}
+Solicitações - Análise
+{% endblock %}
+
+{% block css%}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'lendings/solicitation_detail.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="center-content">
+        <section class="student-header">
+            <i class="bi bi-person-circle"></i> 
+            <div class="student-content">
+                <div class="name-soli">
+                    <p>Aluno 2 da Silva Ferreira</p>
+                    <p>2º Ano Apicultura Vespertino</p>
+                </div>
+                <div class="student-sub">
+                    <p>2023192099900</p>
+                </div>
+            </div>
+        </section>
+        <section class="instrument-header">
+            <img src="{% static 'images/instruments/baixo_usado.webp' %}" alt="">
+            <div class="instrument-content">
+                <span>Baixo Elétrico 5 Cordas</span>
+                <span>Marca: Tagima</span>
+                <span>Cor: Preto</span>
+                <span>
+                    Condição: O Instrumento se apresenta em bom estado sem marcas ou arranhões. Tem somente
+                    um amassado na parte frontal próximo aos potenciômetros.
+                </span>
+            </div>
+        </section>
+        <section class="main-review">
+            <div class="duration">
+                <span id="init">Início 20/10/2023</span>
+                <span id="final">Fim 27/10/2023</span>
+            </div>
+            <p>Justificativa</p>
+            <span id="justify-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus nibh egestas porta vestibulum. Ut euismod mi vitae lorem accumsan porttitor. Nulla faucibus tellus ut velit rhoncus pretium. </span>
+        </section>
+        <section class="soli-buttons">
+            <a class="btn btn-danger" href="{% url 'lendings:solicitationsAdmin' %}" role="button">Indeferir</a>
+            <a class="btn btn-success" href="{% url 'lendings:lendingslist' %}" role="button">Deferir</a>
+        </section>
+    </div>
+{% endblock %}

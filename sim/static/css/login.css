@@ -89,6 +89,7 @@ main{
 
 #loginbtn{
     width: 100%;
+    border-radius: 16px;
 }
 
 .card-footer{
@@ -102,6 +103,7 @@ main{
 }
 
 #suapbtn{
+    border-radius: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -125,7 +127,7 @@ main{
     color: white;
 }
 .form-content{
-    background-color: #1C2434;
+    background-color: #3056D3;
     display: flex;
     justify-content: center;
     align-items: center;

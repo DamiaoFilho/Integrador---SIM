@@ -3,37 +3,37 @@
     font-weight: bold;
 }
 .card-header{
-    background-color: #1C2434;
+    background-color: var(--secondary-bg-color);
     opacity: 90%;
 }
 
 .card-body{
-    background-color: #1C2434;
+    background-color: #efefef;
 }
 
 .card-body label{
-    color: white;
+    color: #071c31;
     opacity: 90%;
 }
 
 .form-control{
-    background-color: #ffffff1d;
+    background-color: #0000001d;
     border: none;
-    color: white;
+    color: #071c31;
 }
 
 .form-control:focus{
     background-color: #1c243430;
-    color: white;
+    color: #071c31;
 }
 
 .form-select{
-    background-color: #ffffff1d;
+    background-color: #0000001d;
     border: none;
-    color: white;
+    color: #071c31;
 }
 
 .form-select:focus{
     background-color: #1c243430;
-    color: white;
+    color: #071c31;
 }
