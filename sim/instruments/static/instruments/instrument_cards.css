@@ -1,49 +1,54 @@
 .instrument-card{
-    background-color: #3056d320;
+    background-color: #a7a1da34;
     display: flex;
+    height: 200px;
     border-radius: 16px;
     padding: 0;
-    margin-left: 8px;
     margin-bottom: 16px;
     width: 415px;
+   
 }
 .instrument-card i{
-    color: #ba2626;
+    color: #bd3737;
 }
 
 .status-unavaible{
-    background-color: #ba2626;
+    background-color: #a83737;
     border-radius: 16px;
     font-size: 14px;
 }
 .status-avaible{
-    background-color: #2c984b;
+    background-color: #399c52;
     border-radius: 16px;
     font-size: 14px;
 }
 .card-status{
     width: 100px;
+    height: 22px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .card-info{
     margin-left: 12px;
+    margin-top: 12px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
 }
 .instrument-card img{
     border-radius: 4px;
-    height: 200px;
+    max-height: 90%;
 }   
-.card-title p{
-    font-weight: bold;
-    color: black;
+.card-title {
+    font-weight: 800;
+    color: #092c5e;
+    font-size: 15pt;
 }
-.card-brand p{
+.card-brand {
     font-weight: bold;
     color: black;
+    margin-bottom: 10px;
 }
 .actions-buttons{
     display: flex;
@@ -55,10 +60,13 @@
 .card-buttons{
     margin-top: auto;
     margin-bottom: 12px;
+    margin-right: 12px;
     display: flex;
-    width: 240px;
+    flex-wrap: wrap;
+    width: auto;
     gap: 12px;
     justify-content: space-between;
+    
 }
 .card-button{
     border-radius: 16px;
@@ -66,17 +74,26 @@
 
 .card-button p{
     color: white;
+    font-weight: 500;
+}
+
+.card-button.lend{
+    background-color: #d48e1d;
 }
 
 .instrument-card-img{
     display: flex;
     align-items: center;
+    margin-left: 12px;
+    padding: 12px 0;
+    width: 140px;
+    justify-content: center;
+    
 }
 
 .instrument-card-img img{
-    width: 150px;
-    height: auto;
-    max-height: 200px;
+    max-width: 140px;
+    max-height: 100%;
     object-fit: contain;
     border-radius: 16px;
 }

@@ -3,8 +3,8 @@ table {
     border-collapse: collapse;
     font-size: 16px;
     border-radius: 8px;
-    background-color: #3056d320;
     color: black;
+    border-radius: 16px;
 }
 th, td {
     padding: 10px;
@@ -51,8 +51,6 @@ td.devolucao {
 
 td.instrumentos {
     color: black;
-    border-top-right-radius: 16px;
-    border-bottom-right-radius: 16px;
 }
 
 .center-content {

@@ -24,6 +24,11 @@ body{
   margin: 0;
   height: 100vh;
 }
+
+.container{
+  margin-bottom: 32px;
+}
+
 .alert-debug {
   color: black;
   background-color: white;
@@ -37,7 +42,7 @@ body{
 }
 
 .sidebar{
-  background-color: var(--primary-bg-color);
+  background: linear-gradient(var(--primary-bg-color) 60%, #7c71fb);
   position: fixed;
   top: 0;
   width: 200px;
@@ -146,10 +151,12 @@ nav{
 }
 
 .horititle{
-  margin-left: 24px;
+  margin-left: 28px;
 }
 .horititle h1{
-  font-size: 20px;
+  font-size: 30px;
+  font-weight: 800;
+  color: #071c31;
 }
 
 main{
@@ -182,7 +189,7 @@ main{
   display: flex;
   gap: 16px;
   padding: 8px 24px 8px 12px;
-  background-color: #3056D3;
+  background: linear-gradient(270deg, var(--primary-bg-color) 30%, #7c71fb);
   border-top-left-radius: 32px;
   border-bottom-left-radius: 32px;
 }

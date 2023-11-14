@@ -1,5 +1,6 @@
 :root{
-    --detail-color : #3C50E0
+    --detail-color : #3C50E0;
+    --primary-color: #3056D3;
 }
 
 .list-buttons{
@@ -71,7 +72,8 @@
 }
 
 .row{
-    max-width: 1269px;
+    width: 100%;
+    justify-content: space-between;
 }
 
 
@@ -89,13 +91,13 @@
 .pagination-items{
     width: 150px;
     display: flex;
-    background-color: #3056d320;
+    background-color: var(--primary-color);
     border-radius: 16px;
     justify-content: space-around;
     gap: 8px;
 }
 .pagination-items p{
-    color: black;
+    color: white;
 }
 #page-selected{
     color: #3056D3;
@@ -103,11 +105,11 @@
 
 .left-arrow i{
     font-size: 20px;
-    color: #3056D3;
+    color: #a7a1da;
 }
 .right-arrow i{
     font-size: 20px;
-    color: #3056D3;
+    color: #a7a1da;
 }
 
 .pages{
