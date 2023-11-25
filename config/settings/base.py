@@ -2,7 +2,7 @@
 Base settings to build other settings files upon.
 """
 from pathlib import Path
-
+from django.contrib.messages import constants as messages
 import environ
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
@@ -338,3 +338,10 @@ SPECTACULAR_SETTINGS = {
 }
 # Your stuff...
 # ------------------------------------------------------------------------------
+MESSAGE_TAGS = {
+        messages.DEBUG: 'alert-secondary',
+        messages.INFO: 'alert-info',
+        messages.SUCCESS: 'alert-success',
+        messages.WARNING: 'alert-warning',
+        messages.ERROR: 'alert-danger',
+ }

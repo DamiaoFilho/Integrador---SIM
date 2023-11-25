@@ -4,11 +4,16 @@ from django.db import models
 
 
 class Instrument(models.Model):
-    image = models.ImageField(upload_to="instruments/images")
-    name = models.CharField(max_length=150)
-    modelo = models.CharField(max_length=150)
-    serial_number = models.IntegerField()
-    color = models.CharField()
-    condition = models.TextField()
-    status = models.BooleanField()
+    image = models.ImageField(upload_to="instruments/images", verbose_name="Imagem")
+    name = models.CharField(max_length=150, verbose_name="Nome")
+    model = models.CharField(max_length=150, verbose_name="Modelo")
+    brand = models.CharField(max_length=150, verbose_name="Marca")
+    serial_number = models.IntegerField(verbose_name="Número de série")
+    color = models.CharField(verbose_name="Cor")
+    condition = models.TextField(verbose_name="Condição")
+    status = models.BooleanField(default=True, verbose_name="Disponibilidade")
+
+
+    def __str__(self) -> str:
+        return self.name
     

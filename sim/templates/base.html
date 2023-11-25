@@ -65,7 +65,7 @@
       <div class="nav-items">
         <ul class="navbar-items">
           <li>
-            <a class="nav-link" href="{% url 'home' %}">
+            <a class="nav-link" href="{% url 'list' %}">
               <div>
                 <i class="bi bi-music-note-list"></i>
               </div>
@@ -100,7 +100,7 @@
             </a>
           </li>
           <li>
-            <a class="nav-link" href="{% url 'login' %}">
+            <a class="nav-link" href="">
               <div><i class="bi bi-box-arrow-left"></i></div>
               <span><p>Sair</p></span>
             </a>
@@ -131,6 +131,7 @@
     </div>
   </div>
   <main>
+      {% include '_messages.html' %}
       <div class="container">
         {% block content %}
         {% endblock content %}

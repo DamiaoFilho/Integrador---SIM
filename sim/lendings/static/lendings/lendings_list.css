@@ -5,6 +5,7 @@ table {
     border-radius: 8px;
     color: black;
     border-radius: 16px;
+    background-color: #a7a1da34;
 }
 th, td {
     padding: 10px;
@@ -97,16 +98,20 @@ td{
 }
 .analysis{
     background-color: rgba(255, 255, 0, 0.747);
-    border-radius: 8px;
+    border-radius: 16px;
     color: black;
+    padding: 10px;
 }
 .accepted{
     background-color: #2c984b;
-    border-radius: 8px;
+    border-radius: 16px;
     color: black;
+    padding: 10px;
 }
 .declined{
     background-color: #ba2626;
-    border-radius: 8px;
+    border-radius: 16px;
     color: black;
+    padding: 10px;
 }
+

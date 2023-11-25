@@ -20,240 +20,35 @@ Instrumentos
 {% include 'pages/_list_buttons.html' %}
 <div class="list-content list-content-main">
     <div class="row">
+        {% for obj in object_list %}
         <section class="instrument-card col-md-4">
             <div class="instrument-card-img">
-                <img src="{% static 'images\instruments\baixo_usado.webp' %}" alt="">
+                <img src="{{ obj.image.url }}" alt="foto">
             </div>
             <div class="card-info">
                 <div class="card-title">
-                    <p>Baixo Elétrico 5 Cordas</p>
+                    <p>{{ obj.name }}</p>
                 </div>
                 <div class="card-brand">
-                    <p>Marca: Tagima</p>
+                    <p>Marca: {{ obj.brand }}</p>
                 </div>
-                <div class="card-status status-unavaible">
-                    <p>Indisponível</p>
-                </div>
-                <div class="card-buttons">
-                    <div class="delete-button">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn modalbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                <div class="modal-body">
-                                    <p>Tem certeza?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-danger">Sim</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="actions-buttons">
-                        <a href="">
-                            <div class="card-button update">
-                                <p>Atualizar</p>
-                            </div>
-                        </a>
-                        <a href="{% url 'lendings:lendingAdd' %}">
-                            <div class="card-button lend">
-                                <p>Emprestar</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-        </section>
-        <section class="instrument-card col-md-4">
-            <div class="instrument-card-img">
-                <img src="{% static 'images\instruments\piano.webp' %}" alt="">
-            </div>
-            <div class="card-info">
-                <div class="card-title">
-                    <p>Piano Digital</p>
-                </div>
-                <div class="card-brand">
-                    <p>Marca: Korg</p>
-                </div>
-                <div class="card-status status-unavaible">
-                    <p>Indisponível</p>
-                </div>
-                <div class="card-buttons">
-                    <div class="delete-button">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn modalbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                <div class="modal-body">
-                                    <p>Tem certeza?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-danger">Sim</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="actions-buttons">
-                        <a href="">
-                            <div class="card-button update">
-                                <p>Atualizar</p>
-                            </div>
-                        </a>
-                        <a href="{% url 'lendings:lendingAdd' %}">
-                            <div class="card-button lend">
-                                <p>Emprestar</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-        </section>
-        <section class="instrument-card col-md-4">
-            <div class="instrument-card-img">
-                <img src="{% static 'images\instruments\guitar.webp' %}" alt="">
-            </div>
-            <div class="card-info">
-                <div class="card-title">
-                    <p>Guitarra Les Paul</p>
-                </div>
-                <div class="card-brand">
-                    <p>Marca: Gibson</p>
-                </div>
-                <div class="card-status status-unavaible">
-                    <p>Indisponível</p>
-                </div>
-                <div class="card-buttons">
-                    <div class="delete-button">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn modalbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                <div class="modal-body">
-                                    <p>Tem certeza?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-danger">Sim</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="actions-buttons">
-                        <a href="">
-                            <div class="card-button update">
-                                <p>Atualizar</p>
-                            </div>
-                        </a>
-                        <a href="{% url 'lendings:lendingAdd' %}">
-                            <div class="card-button lend">
-                                <p>Emprestar</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-        </section>
-        <section class="instrument-card col-md-4">
-            <div class="instrument-card-img">
-                <img src="{% static 'images\instruments\acoustic_guitar.webp' %}" alt="">
-            </div>
-            <div class="card-info">
-                <div class="card-title">
-                    <p>Violão Elétrico</p>
-                </div>
-                <div class="card-brand">
-                    <p>Marca: Giannini</p>
-                </div>
+                {% if obj.status %}
                 <div class="card-status status-avaible">
                     <p>Disponível</p>
                 </div>
-                <div class="card-buttons">
-                    <div class="delete-button">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn modalbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                <div class="modal-body">
-                                    <p>Tem certeza?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-danger">Sim</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="actions-buttons">
-                        <a href="">
-                            <div class="card-button update">
-                                <p>Atualizar</p>
-                            </div>
-                        </a>
-                        <a href="{% url 'lendings:lendingAdd' %}">
-                            <div class="card-button lend">
-                                <p>Emprestar</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-        </section>
-        <section class="instrument-card col-md-4">
-            <div class="instrument-card-img">
-                <img src="{% static 'images\instruments\cajon.webp' %}" alt="">
-            </div>
-            <div class="card-info">
-                <div class="card-title">
-                    <p>Cajon de Madeira</p>
-                </div>
-                <div class="card-brand">
-                    <p>Marca: Celsius</p>
-                </div>
+                {% else %}
                 <div class="card-status status-unavaible">
                     <p>Indisponível</p>
                 </div>
+                {% endif %}
                 <div class="card-buttons">
                     <div class="delete-button">
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn modalbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="btn modalbtn" data-bs-toggle="modal" data-bs-target="#m{{ obj.id }}">
                             <i class="bi bi-trash-fill"></i>
                         </button>
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="m{{ obj.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -265,14 +60,14 @@ Instrumentos
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-danger">Sim</button>
+                                    <a type="button" class="btn btn-danger" href="{% url 'delete' obj.pk %}">Sim</a>
                                 </div>
                             </div>
                             </div>
                         </div>
                     </div>
                     <div class="actions-buttons">
-                        <a href="">
+                        <a href="{% url 'update' obj.pk %}">
                             <div class="card-button update">
                                 <p>Atualizar</p>
                             </div>
@@ -285,218 +80,7 @@ Instrumentos
                     </div>
                 </div>
         </section>
-        <section class="instrument-card col-md-4">
-            <div class="instrument-card-img">
-                <img src="{% static 'images\instruments\pandeiro.webp' %}" alt="">
-            </div>
-            <div class="card-info">
-                <div class="card-title">
-                    <p>Pandeiro</p>
-                </div>
-                <div class="card-brand">
-                    <p>Marca: Contemporânia</p>
-                </div>
-                <div class="card-status status-avaible">
-                    <p>Disponível</p>
-                </div>
-                <div class="card-buttons">
-                    <div class="delete-button">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn modalbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                <div class="modal-body">
-                                    <p>Tem certeza?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-danger">Sim</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="actions-buttons">
-                        <a href="">
-                            <div class="card-button update">
-                                <p>Atualizar</p>
-                            </div>
-                        </a>
-                        <a href="{% url 'lendings:lendingAdd' %}">
-                            <div class="card-button lend">
-                                <p>Emprestar</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-        </section>
-        <section class="instrument-card col-md-4">
-            <div class="instrument-card-img">
-                <img src="{% static 'images\instruments\trompete.webp' %}" alt="">
-            </div>
-            <div class="card-info">
-                <div class="card-title">
-                    <p>Trompete Sib</p>
-                </div>
-                <div class="card-brand">
-                    <p>Marca: Conn</p>
-                </div>
-                <div class="card-status status-avaible">
-                    <p>Disponível</p>
-                </div>
-                <div class="card-buttons">
-                    <div class="delete-button">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn modalbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                <div class="modal-body">
-                                    <p>Tem certeza?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-danger">Sim</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="actions-buttons">
-                        <a href="">
-                            <div class="card-button update">
-                                <p>Atualizar</p>
-                            </div>
-                        </a>
-                        <a href="{% url 'lendings:lendingAdd' %}">
-                            <div class="card-button lend">
-                                <p>Emprestar</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-        </section>
-        <section class="instrument-card col-md-4">
-            <div class="instrument-card-img">
-                <img src="{% static 'images\instruments\flauta.webp' %}" alt="">
-            </div>
-            <div class="card-info">
-                <div class="card-title">
-                    <p>Flauta Transversal</p>
-                </div>
-                <div class="card-brand">
-                    <p>Marca: Yamaha</p>
-                </div>
-                <div class="card-status status-avaible">
-                    <p>Disponível</p>
-                </div>
-                <div class="card-buttons">
-                    <div class="delete-button">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn modalbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                <div class="modal-body">
-                                    <p>Tem certeza?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-danger">Sim</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="actions-buttons">
-                        <a href="">
-                            <div class="card-button update">
-                                <p>Atualizar</p>
-                            </div>
-                        </a>
-                        <a href="{% url 'lendings:lendingAdd' %}">
-                            <div class="card-button lend">
-                                <p>Emprestar</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-        </section>
-        <section class="instrument-card col-md-4">
-            <div class="instrument-card-img">
-                <img src="{% static 'images\instruments\carrilhao.webp' %}" alt="">
-            </div>
-            <div class="card-info">
-                <div class="card-title">
-                    <p>Carrilhão 24 Barras</p>
-                </div>
-                <div class="card-brand">
-                    <p>Marca: Torelli</p>
-                </div>
-                <div class="card-status status-unavaible">
-                    <p>Indisponível</p>
-                </div>
-                <div class="card-buttons">
-                    <div class="delete-button">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn modalbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                <div class="modal-body">
-                                    <p>Tem certeza?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-danger">Sim</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="actions-buttons">
-                        <a href="">
-                            <div class="card-button update">
-                                <p>Atualizar</p>
-                            </div>
-                        </a>
-                        <a href="{% url 'lendings:lendingAdd' %}">
-                            <div class="card-button lend">
-                                <p>Emprestar</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-        </section>
+        {% endfor %}
     </div>
     </div>
     </div>

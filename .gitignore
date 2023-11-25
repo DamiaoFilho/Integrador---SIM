@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 ### Python template
-=======
->>>>>>> ea70816ef30d58359bca1a09ece1733f50797aa1
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -9,7 +6,7 @@ __pycache__/
 
 # C extensions
 *.so
-
+migrations/
 # Distribution / packaging
 .Python
 build/
@@ -24,17 +21,14 @@ parts/
 sdist/
 var/
 wheels/
-<<<<<<< HEAD
 *.egg-info/
 .installed.cfg
 *.egg
-=======
 share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
 MANIFEST
->>>>>>> ea70816ef30d58359bca1a09ece1733f50797aa1
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -49,10 +43,7 @@ pip-delete-this-directory.txt
 # Unit test / coverage reports
 htmlcov/
 .tox/
-<<<<<<< HEAD
-=======
 .nox/
->>>>>>> ea70816ef30d58359bca1a09ece1733f50797aa1
 .coverage
 .coverage.*
 .cache

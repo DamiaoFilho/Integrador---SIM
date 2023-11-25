@@ -1,44 +1,16 @@
 from django import forms
 from crispy_forms.layout import Column, Layout, Row, Fieldset
 from crispy_forms.helper import FormHelper
+from .models import Instrument
 
-class InstrumentForm(forms.Form):
-    image = forms.ImageField(
-        label="Imagem",
-        widget=forms.FileInput()
-    )
-    name = forms.CharField(
-        label="Nome",
-        widget=forms.TextInput()
-    )
-    model = forms.CharField(
-        label="Modelo",
-    )
-    serial_number = forms.IntegerField(
-        label="Número de Série",
-    )
-    color = forms.CharField(
-        label="Cor",
-    )
-    category = forms.CharField(
-        label="Categoria",
-    )
-    status = forms.CharField(
-        label="Status",
-        widget=forms.Textarea()
-    )
-    documents1 = forms.FileField(
-        label="Anexo 1",
-        required=False,
-    )
-    documents2 = forms.FileField(
-        label="Anexo 2",
-        required=False,
-    )
+class InstrumentForm(forms.ModelForm):
+
+    class Meta:
+        model = Instrument
+        exclude = ["status"]
+
     
-    helper = FormHelper()
-    helper.form_tag = False
-    helper.layout = Layout(
+    layout = Layout(
         Fieldset(
             Row(
                 Column("image", css_class="col")

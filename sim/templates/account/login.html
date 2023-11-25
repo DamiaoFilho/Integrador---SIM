@@ -13,7 +13,7 @@
 <body>
   <main>
     <div class="content">
-      <a href="{% url 'login' %}" class="login-left half-width-div">
+      <a href="{% url 'account_login' %}" class="login-left half-width-div">
         <div class="header">
           <img src="{% static 'images/logos/logo.png'%}" alt="">
           <span><p>SIM</p></span>
@@ -29,11 +29,10 @@
       <div class="form-content half-width-div">
         <div class="login-form">
             <form class="form" method="post">
-              {% block form_content %}
               {% csrf_token %}
-              {% crispy form %}
               <div class="card-footer d-flex">
-                <a id="loginbtn" href="{% url 'home' %}" class="btn btn-success btn-md active" role="button" aria-pressed="true">Entrar</a>
+                {% crispy form %}
+                <button id="loginbtn" href="#" type="submit" class="btn btn-success btn-md active" role="button" aria-pressed="true">Entrar</button>
                 <a id="suapbtn" href="#" class="btn btn-primary btn-md active" role="button" aria-disabled="true">
                   <img src="{% static 'images/logos/suap.png'%}" alt="">
                   <span><p>Login com SUAP</p></span>
@@ -44,7 +43,6 @@
                   </span>
                 </div>
               </div>
-              {% endblock %}
             </form>
           </div>
         </div>

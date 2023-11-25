@@ -1,0 +1,12 @@
+{% if messages %}
+{% for message in messages %}
+<div class="message">
+    <div class="alert {{ message.tags }} d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+    <div>
+        {{ message }}
+    </div>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
