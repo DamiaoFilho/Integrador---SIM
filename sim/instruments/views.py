@@ -2,13 +2,17 @@ from typing import Any
 from django.forms.models import BaseModelForm
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
-from django.views.generic import *
 from django.contrib import messages
 from .forms import InstrumentForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Instrument
 # Create your views here.
 
+
+from ..core.views import CreateView
+from ..core.views import DeleteView
+from ..core.views import UpdateView
+from ..core.views import ListView
 
 class InstrumentCreateView(CreateView):
     model = Instrument
@@ -28,6 +32,9 @@ class InstrumentListView(ListView):
     model = Instrument
     template_name = "instruments_list.html"
     paginate_by = 9
+
+    def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
+        return super().get(request, *args, **kwargs)
 
 class InstrumentUpdateView(UpdateView):
     model = Instrument

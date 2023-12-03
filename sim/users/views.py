@@ -1,12 +1,16 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.forms.models import BaseModelForm
+from django.http import HttpResponse
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import DetailView, RedirectView, UpdateView, FormView
+from django.views.generic import DetailView, RedirectView, UpdateView, FormView, CreateView
 User = get_user_model()
+from django.contrib.auth.models import Group
 
-from .forms import UserSignIn, UserSignUp
+
+from .forms import StudentUserForm
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
@@ -43,12 +47,18 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 
 user_redirect_view = UserRedirectView.as_view()
 
-class UserLoginView(FormView):
-    form_class = UserSignIn
-    template_name="account/login.html"
-    success_url="/"
 
-class UserCreateView(FormView):
-    form_class=UserSignUp
-    template_name="account/signup.html"
-    success_url ="login/"
+class StudentSignUpView(CreateView):
+    form_class = StudentUserForm
+    template_name = "account/signup.html"
+    success_url = "/signin"
+
+    def form_valid(self, form: BaseModelForm) -> HttpResponse:
+        student_group = Group.objects.get(name='student')
+
+        student = form["student"].save(commit=False)
+        student.user = form["user"].save()
+
+        student.groups.add(student_group)
+
+        student.save()

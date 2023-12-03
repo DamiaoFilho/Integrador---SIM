@@ -8,6 +8,8 @@ from sim.users.forms import UserAdminChangeForm, UserAdminCreationForm
 
 User = get_user_model()
 
+from .models import *
+
 if settings.DJANGO_ADMIN_FORCE_ALLAUTH:
     # Force the `admin` sign in process to go through the `django-allauth` workflow:
     # https://django-allauth.readthedocs.io/en/stable/advanced.html#admin
@@ -37,3 +39,6 @@ class UserAdmin(auth_admin.UserAdmin):
     )
     list_display = ["username", "name", "is_superuser"]
     search_fields = ["name"]
+
+
+admin.site.register(Student)

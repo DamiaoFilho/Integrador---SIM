@@ -82,8 +82,12 @@
             </a>
             <ul class="sub-menu">
               <a href="{% url 'lendings:lendingslist' %}">Lista</a>
+              {% if request.user.groups.all.0.name == 'professor' %}
               <a href="{% url 'lendings:solicitationsAdmin' %}">Solicitações</a>
-              <a href="{% url 'lendings:solicitations' %}">Minhas Solicitações</a>
+              {% endif %}
+              {% if request.user.groups.all.0.name == 'student' %}
+                <a href="{% url 'lendings:solicitations' %}">Minhas Solicitações</a>
+              {% endif %}
             </ul>
           </li>
         </ul>
@@ -100,7 +104,7 @@
             </a>
           </li>
           <li>
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{% url 'logout' %}">
               <div><i class="bi bi-box-arrow-left"></i></div>
               <span><p>Sair</p></span>
             </a>
@@ -123,12 +127,16 @@
       </div>
       <div class="name">
         <span><p id="username">{{ request.user.username }}</p></span>
-        <span><p id="function">Professora</p></span>
+        {% if request.user.groups.all.0.name == 'student' %}
+        <span><p id="function">Estudante</p></span>
+        {% else %}
+        <span><p id="function">Admin</p></span>
+        {% endif %}
       </div>
       <div id="profile">
-        <img src="{% static 'images/users/ex.webp' %}" alt="">
+            <img src="{{ request.user.profile.first.photo.url }}" alt="profileIcon">
+        </div>
       </div>
-    </div>
   </div>
   <main>
       {% include '_messages.html' %}

@@ -7,6 +7,12 @@ from django import forms
 User = get_user_model()
 
 
+from django import forms
+from .models import Student
+from .models import User as UserModel
+from betterforms.multiform import MultiModelForm
+from django.contrib.auth.forms import UserCreationForm
+
 class UserAdminChangeForm(admin_forms.UserChangeForm):
     class Meta(admin_forms.UserChangeForm.Meta):
         model = User
@@ -41,44 +47,19 @@ class UserSocialSignupForm(SocialSignupForm):
     """
 
 
-class UserSignIn(forms.Form):
-    email = forms.EmailField(
-        label="Login", 
-        required=False,
-        widget=forms.EmailInput(
-            attrs={'placeholder': 'Matricula ou Email'}
-        )
-    )
-    password = forms.CharField(
-        label="Senha",
-        required=False,
-        widget=forms.PasswordInput(
-            attrs={'placeholder': 'Digite sua senha'}
-        )
-    )
+class StudentForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        exclude = ["user", "is_colleger"]
 
-class UserSignUp(forms.Form):
-    name = forms.CharField(
-        label="Nome",
-        widget=forms.TextInput()
-    )
-    surname = forms.CharField(
-        label="Sobrenome",
-        widget=forms.TextInput()
-    )
-    registration = forms.IntegerField(
-        label="Matrícula",
-        widget=forms.NumberInput()
-    )
-    email = forms.EmailField(
-        label="Email",
-        widget=forms.EmailInput()
-    )
-    number = forms.IntegerField(
-        label="Número de telefone",
-        widget=forms.NumberInput()
-    )
-    password = forms.CharField(
-        label="Senha",
-        widget=forms.PasswordInput()
-    )
+class UserForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ["username", "email"]
+
+class StudentUserForm(MultiModelForm):
+    form_classes = {
+        "student": StudentForm,
+        "user": UserForm
+    }
+        
