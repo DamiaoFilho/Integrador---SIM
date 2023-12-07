@@ -1,6 +1,7 @@
 from django import forms
 from crispy_forms.layout import Column, Layout, Row, Fieldset
 from crispy_forms.helper import FormHelper
+from .models import Lending
 
 students = (
     ("STUDENT", "Aluno 1"),
@@ -16,53 +17,9 @@ instruments = (
     ("INSTRUMENT", "Baixo"),
 )
 
-class LendingCreateForm(forms.Form):
-    instrument = forms.ChoiceField(
-        label="Instrumento",
-        choices=instruments,
-        widget=forms.Select()
-    )
-    student = forms.ChoiceField(
-        label="Aluno",
-        choices=students,
-        widget=forms.Select()
-    )
-    password = forms.CharField(
-        label="Senha",
-        widget=forms.PasswordInput()
-    )
-    initDate = forms.DateField(
-        label="Data de Início",
-        widget=forms.DateInput(attrs={'type': 'date'})
-    )
-    finalDate = forms.DateField(
-        label="Data de Fim",
-        widget=forms.DateInput(attrs={'type': 'date'})
-    )
-    justify = forms.CharField(
-        label="Justificativa",
-        widget=forms.Textarea()
-    )
 
-
-    helper = FormHelper()
-    helper.form_tag = False
-    helper.layout = Layout(
-        Row(
-            Column("instrument", css_class="col")
-        ),
-        Row(
-            Column("student", css_class="col")
-        ),
-        Row(
-            Column("password", css_class="col"),
-        ),
-        Row(
-            Column("justify", css_class="col")
-        ),
-        Row(
-            Column("initDate", css_class="col-md-6"),
-            Column("finalDate", css_class="col-md-6"),
-        )
-    )
+class LendingForm(forms.ModelForm):
+    class Meta:
+        model = Lending
+        exclude = ["createDate", "status"]
    

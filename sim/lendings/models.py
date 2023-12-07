@@ -13,15 +13,23 @@ class Lending(models.Model):
 
     initDate = models.DateField(verbose_name="Data de Início")
     finalDate = models.DateField(verbose_name="Data de Fim")
-    justify = models.TextField(verbose_name="Justificativa")
-    status = models.CharField(verbose_name="Status", choices=StatusChoices.choices)
+    createDate = models.DateField(auto_now_add=True)
+    active = models.BooleanField(default=True)
 
-    instrument = models.OneToOneField(Instrument, on_delete=models.CASCADE, verbose_name="Instrumento")
-    professor = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="professor", verbose_name="Professor")
-    student = models.OneToOneField(Professor, on_delete=models.CASCADE, related_name="student", verbose_name="Estudante")
+    justify = models.TextField(verbose_name="Justificativa")
+    status = models.CharField(verbose_name="Status", choices=StatusChoices.choices, default=StatusChoices.IN_ANALISYS)
+
+    instrument = models.ForeignKey(Instrument, on_delete=models.CASCADE, verbose_name="Instrumento")
+    professor = models.ForeignKey(Professor, on_delete=models.CASCADE, related_name="professor", verbose_name="Professor")
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="student", verbose_name="Estudante")
 
     def __str__(self) -> str:
-        return f"{self.student.name}: {self.instrument}"
+        return f"{self.student.user.username}: {self.instrument}"
+    
+
+    class Meta:
+        verbose_name = "Empréstimo"
+        verbose_name_plural = "Empréstimos"
     
 
 class Return(models.Model):

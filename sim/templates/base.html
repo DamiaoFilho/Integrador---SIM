@@ -81,13 +81,13 @@
                   <i class="bi bi-caret-down-fill arrow-sub-menu"></i>
             </a>
             <ul class="sub-menu">
-              <a href="{% url 'lendings:lendingslist' %}">Lista</a>
+              <a href="{% url 'lendings:list' %}">Em andamento</a>
               {% for group in request.user.groups.all %}
               {% if group.name == 'professor'%}
-              <a href="{% url 'lendings:solicitationsAdmin' %}">Solicitações</a>
+              <a href="{% url 'lendings:requests' %}">Solicitações</a>
               {% endif %}
               {% if group.name == 'student' %}
-                <a href="{% url 'lendings:solicitations' %}">Minhas Solicitações</a>
+                <a href="{% url 'lendings:studentRequests' %}">Minhas Solicitações</a>
               {% endif %}
               {% endfor %}
             </ul>
@@ -129,14 +129,20 @@
       </div>
       <div class="name">
         <span><p id="username">{{ request.user.username }}</p></span>
-        {% if request.user.groups.all.0.name == 'student' %}
-        <span><p id="function">Estudante</p></span>
-        {% else %}
-        <span><p id="function">Admin</p></span>
-        {% endif %}
+        {% for group in request.user.groups.all %}
+          {% if group.name == 'student' %}
+          <span><p id="function">Estudante</p></span>
+          {% else %}
+          <span><p id="function">Admin</p></span>
+          {% endif %}
+        {% endfor %}
       </div>
       <div id="profile">
-            <img src="{{ request.user.profile.first.photo.url }}" alt="profileIcon">
+            {% if request.user.groups.all.0.name == 'student' %}
+            <img src="{{ request.user.StudentUser.first.photo.url }}" alt="profileIcon">
+            {% else %}
+            <img src="{{ request.user.ProfessorUser.first.photo.url }}" alt="profileIcon">
+            {% endif %}
         </div>
       </div>
   </div>

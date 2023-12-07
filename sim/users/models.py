@@ -72,6 +72,7 @@ class Student(Profile):
     def __str__(self) -> str:
         return self.user.username
     
+    
 class Professor(Profile):
     employee_register = models.IntegerField(verbose_name="Número de Servidor")
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="ProfessorUser")

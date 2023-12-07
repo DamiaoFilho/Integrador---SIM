@@ -58,7 +58,7 @@ class StudentSignUpView(CreateView):
         student_group = Group.objects.get(name='student')
 
         student = form["student"].save(commit=False)
-        student.user = form["user"].save()
+        student.user = form["user"].save(self.request)
 
         student.user.groups.add(student_group)
 

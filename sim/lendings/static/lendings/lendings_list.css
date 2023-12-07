@@ -9,10 +9,12 @@ table {
 }
 th, td {
     padding: 10px;
-    text-align: left;
+    text-align: center;
     position: relative; /* Para posicionar as linhas corretamente */
     line-height: 4; /* Aumenta o espaçamento entre as linhas */
 }
+
+
 
 /* Adicione linhas horizontais nas células da tabela, exceto a última linha */
 tr:not(:last-child) td::after {
@@ -115,3 +117,7 @@ td{
     padding: 10px;
 }
 
+table a{
+    color: blue;
+    text-align: center;
+}

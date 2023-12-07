@@ -42,3 +42,4 @@ class UserAdmin(auth_admin.UserAdmin):
 
 
 admin.site.register(Student)
+admin.site.register(Professor)

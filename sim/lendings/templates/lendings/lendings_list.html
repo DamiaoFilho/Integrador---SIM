@@ -1,0 +1,35 @@
+{% extends "pages/list.html" %}
+{% load static %}
+{% load render_table from django_tables2 %}
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'lendings/lendings_list.css' %}">
+
+{% endblock %}
+
+{% block addLink %}
+
+<a class="button-content" href="{% url 'lendings:lendingAdd' %}">
+
+{% endblock %}
+
+{% block page_name %}
+Empréstimos
+{% endblock %}
+
+
+{% block content %}
+{{ block.super }}
+    {% include 'pages/_list_buttons.html' %}
+    
+    <div class="center-content">
+        <table>
+            {% render_table table %}
+        </table>
+        
+
+    </div>
+    
+{% endblock %}
+    
+

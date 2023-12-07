@@ -5,6 +5,9 @@ from django.db import models
 class Category(models.Model):
     name = models.CharField(verbose_name="Nome", max_length=50)
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class Instrument(models.Model):
     image = models.ImageField(upload_to="instruments/images", verbose_name="Imagem")

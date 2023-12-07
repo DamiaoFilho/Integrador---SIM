@@ -1,20 +1,15 @@
+{% load bootstrap3 %}
+
 <div class="list-buttons">
-    <div class="search col-md-3">
-        <div class="search-header">
-            <i class="bi bi-search"></i>
-            <p>Procurar...</p>
-        </div>
-    </div>
     <section>
-        <div class="button">
-            <a class="button-content" href="">
-                <div class="button-content">
-                    <i class="bi bi-funnel-fill"></i>
-                    <p>Filtros</p>
-                </div>
-            </a>
+        <div class="search col-md-3">
+            <div class="search-header">
+                <i class="bi bi-search"></i>
+                <p>Procurar...</p>
+            </div>
         </div>
-        {% if request.user.groups.all.0.name == "professor" %}
+        {% for group in request.user.groups.all %}
+        {% if group.name == 'professor'%}
         <div class="button add-button">
             {% block addLink %}
             <a class="button-content" href="{% url 'add' %}">
@@ -25,6 +20,19 @@
                 </div>
             </a>
         </div>
+    </section>
+    {% endif %}
+{% endfor %}
+    <section>
+        <div>
+            {% if filter %}
+            <div class="filter-form">
+            <form action="" method="get" class="form">
+                {% bootstrap_form filter.form layout='inline' %}
+                <button class="btn btn-success mt-4">Filtrar</button>
+            </form>
+        </div>
         {% endif %}
+        </div>
     </section>
 </div>

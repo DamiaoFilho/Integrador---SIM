@@ -285,3 +285,21 @@ footer p{
   transform: rotate(180deg);
   transition: 0.4s;
 }
+
+.filter-form{
+  margin-top: 4px;
+  background-color: #a7a1da34;  
+  padding: 10px;
+  border-radius: 16px;
+}
+.filter-form form{
+  display: flex;
+  gap: 8px;
+}
+.filter-form label{
+  color: black;
+}
+
+.filter-form button{
+  margin: auto;
+}

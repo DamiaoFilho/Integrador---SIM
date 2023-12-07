@@ -1,0 +1,48 @@
+{% extends "pages/list.html" %}
+{% load static %}
+{% load render_table from django_tables2 %}
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'lendings/lendings_list.css' %}">
+
+{% endblock %}
+
+{% block addLink %}
+
+<a class="button-content" href="">
+
+{% endblock %}
+
+{% block page_name %}
+Empréstimos
+{% endblock %}
+
+
+{% block content %}
+{{ block.super }}
+    {% include 'pages/_list_buttons.html' %}
+    <div class="center-content">
+        
+        <table>
+            {% render_table table %}
+        </table>
+    </div>
+
+    {% comment %} <div class="list-content">
+        <div class="row pagination">
+            <div class="pagination-items">
+                <div class="left-arrow"><i class="bi bi-caret-left-fill"></i></div>
+                <div class="pages">
+                    <p class="selected">1</p>
+                    <p>2</p>
+                    <p>3</p>
+                    <p>4</p>
+                </div>
+                <div class="right-arrow"><i class="bi bi-caret-right-fill"></i></div>
+            </div>
+        </div>
+    </div> {% endcomment %}
+    
+{% endblock %}
+    
+
