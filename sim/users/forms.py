@@ -60,6 +60,6 @@ class UserForm(UserCreationForm):
 class StudentUserForm(MultiModelForm):
     form_classes = {
         "student": StudentForm,
-        "user": UserForm
+        "user": SignupForm
     }
         

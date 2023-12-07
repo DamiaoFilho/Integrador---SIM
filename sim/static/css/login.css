@@ -11,7 +11,6 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     margin: auto;
 }
 
@@ -56,6 +55,7 @@ main{
     display: flex;
     flex-direction: column;
 }
+
 
 .half-width-div {
     margin: auto;
@@ -125,6 +125,7 @@ main{
 }
 .form-content > *{
     color: white;
+    margin: 42px auto 42px auto;
 }
 .form-content{
     background-color: #3056D3;
@@ -133,4 +134,15 @@ main{
     align-items: center;
     height: fit-content;
     min-height: 100vh;
+}
+
+.login-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-logo a{
+    position: fixed;
+    top: 30%;
+    left: 15%;
 }

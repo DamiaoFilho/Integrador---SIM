@@ -1,14 +1,15 @@
+from typing import Any
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.forms.models import BaseModelForm
-from django.http import HttpResponse
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, RedirectView, UpdateView, FormView, CreateView
 User = get_user_model()
 from django.contrib.auth.models import Group
-
+from django.shortcuts import redirect
 
 from .forms import StudentUserForm
 
@@ -51,7 +52,7 @@ user_redirect_view = UserRedirectView.as_view()
 class StudentSignUpView(CreateView):
     form_class = StudentUserForm
     template_name = "account/signup.html"
-    success_url = "/signin"
+    success_url = "/login/"
 
     def form_valid(self, form: BaseModelForm) -> HttpResponse:
         student_group = Group.objects.get(name='student')
@@ -59,6 +60,13 @@ class StudentSignUpView(CreateView):
         student = form["student"].save(commit=False)
         student.user = form["user"].save()
 
-        student.groups.add(student_group)
+        student.user.groups.add(student_group)
 
         student.save()
+        return redirect(self.success_url)
+    
+    def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+        if self.request.user.is_authenticated:
+            return redirect("/")
+        return super().get(request, *args, **kwargs)
+

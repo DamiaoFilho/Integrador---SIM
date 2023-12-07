@@ -2,6 +2,9 @@ from django.db import models
 
 # Create your models here.
 
+class Category(models.Model):
+    name = models.CharField(verbose_name="Nome", max_length=50)
+
 
 class Instrument(models.Model):
     image = models.ImageField(upload_to="instruments/images", verbose_name="Imagem")
@@ -12,6 +15,7 @@ class Instrument(models.Model):
     color = models.CharField(verbose_name="Cor")
     condition = models.TextField(verbose_name="Condição")
     status = models.BooleanField(default=True, verbose_name="Disponibilidade")
+    category = models.ManyToManyField(Category, verbose_name="Categoria")
 
 
     def __str__(self) -> str:

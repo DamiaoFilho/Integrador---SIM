@@ -6,7 +6,7 @@ from django.views.generic import UpdateView as DjangoUpdateView
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
-
+from ..instruments.models import Instrument
 
 class UpdateView(LoginRequiredMixin, DjangoUpdateView):
     login_url = "/login/"
@@ -19,3 +19,7 @@ class DeleteView(LoginRequiredMixin, DjangoDeleteView):
 
 class ListView(LoginRequiredMixin, DjangoListView):
     login_url = "/login/"
+
+class DashBoardView(ListView):
+    model = Instrument
+    template_name = "core/dashboard.html"

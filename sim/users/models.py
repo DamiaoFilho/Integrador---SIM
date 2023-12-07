@@ -24,6 +24,7 @@ class User(AbstractUser):
 
         """
         return reverse("users:detail", kwargs={"username": self.username})
+    
 
 
 
@@ -33,9 +34,8 @@ class Profile(models.Model):
         abstract = True
 
     register = models.IntegerField(verbose_name="Matrícula")
-    photo = models.ImageField(verbose_name="Foto de Perfil", blank=True, default="static/images/users/profile.web")
+    photo = models.ImageField(verbose_name="Foto de Perfil", blank=True, default='default/profiles/profile.webp')
     phone = models.CharField(verbose_name="Telefone")
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="profile")
 
 
 class Student(Profile):
@@ -67,7 +67,12 @@ class Student(Profile):
     course = models.CharField(verbose_name="Curso", choices=CoursesChoices.choices)
     shift = models.CharField(verbose_name="Turno", choices=ShiftChoices.choices)
     is_colleger = models.BooleanField(default=False)    
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="StudentUser")
 
     def __str__(self) -> str:
         return self.user.username
+    
+class Professor(Profile):
+    employee_register = models.IntegerField(verbose_name="Número de Servidor")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="ProfessorUser")
     

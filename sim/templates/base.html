@@ -82,12 +82,14 @@
             </a>
             <ul class="sub-menu">
               <a href="{% url 'lendings:lendingslist' %}">Lista</a>
-              {% if request.user.groups.all.0.name == 'professor' %}
+              {% for group in request.user.groups.all %}
+              {% if group.name == 'professor'%}
               <a href="{% url 'lendings:solicitationsAdmin' %}">Solicitações</a>
               {% endif %}
-              {% if request.user.groups.all.0.name == 'student' %}
+              {% if group.name == 'student' %}
                 <a href="{% url 'lendings:solicitations' %}">Minhas Solicitações</a>
               {% endif %}
+              {% endfor %}
             </ul>
           </li>
         </ul>

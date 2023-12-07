@@ -10,7 +10,6 @@ from django.contrib.auth.views import LoginView, LogoutView
 from sim.users.views import StudentSignUpView
 
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="base.html"), name="home"),
     path("about/", TemplateView.as_view(template_name="pages/about.html"), name="about"),
 
     # Django Admin, use {% url 'admin:index' %}
@@ -19,12 +18,13 @@ urlpatterns = [
     # User management
     path("users/", include("sim.users.urls", namespace="users")),
     path("signup/", StudentSignUpView.as_view(), name="signup"),
-    path("login/", LoginView.as_view(template_name="account/login.html"), name="login"),
+    path("login/", LoginView.as_view(template_name="account/login.html", redirect_authenticated_user=True), name="login"),
     path("logout/", LogoutView.as_view(next_page="/login/"), name="logout"),
 
     # Your stuff: custom urls includes go here
     path("instruments/", include('sim.instruments.urls')),
-    path("lendings/", include("sim.lendings.urls", namespace="lendings"))
+    path("lendings/", include("sim.lendings.urls", namespace="lendings")),
+    path("", include("sim.core.urls")),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # API URLS
