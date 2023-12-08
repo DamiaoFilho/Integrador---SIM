@@ -7,8 +7,9 @@ from .forms import InstrumentForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Instrument
 # Create your views here.
+from django_filters.views import FilterView
 
-
+from .tables import InstrumentFilter
 from ..core.views import CreateView
 from ..core.views import DeleteView
 from ..core.views import UpdateView
@@ -28,10 +29,11 @@ class InstrumentCreateView(CreateView):
 
 
 
-class InstrumentListView(ListView):
+class InstrumentListView(FilterView, ListView):
     model = Instrument
     template_name = "instruments_list.html"
-    paginate_by = 9
+    paginate_by = 1
+    filterset_class = InstrumentFilter
 
     def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
         return super().get(request, *args, **kwargs)

@@ -1,5 +1,7 @@
 {% extends "pages/list.html" %}
 {% load static %}
+{% load bootstrap3 %}
+
 
 {% block css %}
 {{ block.super }}
@@ -91,16 +93,30 @@ Instrumentos
 <div class="list-content">
     <div class="row pagination">
         <div class="pagination-items">
-            <div class="left-arrow"><i class="bi bi-caret-left-fill"></i></div>
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">
+                <div class="left-arrow"><i class="bi bi-caret-left-fill"></i></div>
+            </a>
+            {% else %}
+            <a href="#">
+                <div class="left-arrow"><i class="bi bi-caret-left-fill"></i></div>
+            </a>
+            {% endif %}
             <div class="pages">
-                <p class="selected">1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
+                <p class="selected">{{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</p>
             </div>
-            <div class="right-arrow"><i class="bi bi-caret-right-fill"></i></div>
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">
+                <div class="right-arrow"><i class="bi bi-caret-right-fill"></i></div>
+            </a>
+            {% else %}
+            <a href="#">
+                <div class="right-arrow"><i class="bi bi-caret-right-fill"></i></div>
+            </a>
+            {% endif %}
         </div>
     </div>
+</div>
 </div>
 
 {% endblock %}

@@ -5,7 +5,6 @@ from django.views.generic import DeleteView as DjangoDeleteView
 from django.views.generic import UpdateView as DjangoUpdateView
 from django_filters.views import FilterView
 from django_tables2.views import SingleTableMixin
-
 from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 from ..instruments.models import Instrument
@@ -29,3 +28,4 @@ class DashBoardView(ListView):
 
 class TableListView(SingleTableMixin, FilterView):
     pass
+

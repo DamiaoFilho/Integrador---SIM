@@ -1,15 +1,51 @@
 {% load bootstrap3 %}
-
 <div class="list-buttons">
-    <section>
-        <div class="search col-md-3">
-            <div class="search-header">
-                <i class="bi bi-search"></i>
-                <p>Procurar...</p>
-            </div>
+    <div class="search col-md-3">
+        <div class="search-header">
+            <i class="bi bi-search"></i>
+            <p>Procurar...</p>
         </div>
-        {% for group in request.user.groups.all %}
-        {% if group.name == 'professor'%}
+    </div>
+    <section>
+        <div>
+            <!-- Button trigger modal -->
+            <a class="button" href="#">
+                <div class="button-content" data-bs-toggle="modal" data-bs-target="#filter">
+                    <div class="button-content">
+                        <i class="bi bi-funnel-fill"></i>
+                        <p>Filtros</p>
+                    </div>
+                </div>    
+            </a>
+            {% if filter %}
+            <!-- Modal -->
+            <div class="modal fade" id="filter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Filtrar</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                    <form action="" method="get" class="form">
+                        <div class="modal-body">
+                            <div class="filter-form">
+                                {% for field in filter.form %}
+                                <div>
+                                    {% bootstrap_field field %}
+                                </div>
+                                {% endfor %}
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-success">Filtrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+        </div>
         <div class="button add-button">
             {% block addLink %}
             <a class="button-content" href="{% url 'add' %}">
@@ -19,20 +55,6 @@
                     <p>Adicionar</p>
                 </div>
             </a>
-        </div>
-    </section>
-    {% endif %}
-{% endfor %}
-    <section>
-        <div>
-            {% if filter %}
-            <div class="filter-form">
-            <form action="" method="get" class="form">
-                {% bootstrap_form filter.form layout='inline' %}
-                <button class="btn btn-success mt-4">Filtrar</button>
-            </form>
-        </div>
-        {% endif %}
         </div>
     </section>
 </div>
