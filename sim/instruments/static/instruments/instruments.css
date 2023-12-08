@@ -48,3 +48,11 @@
 .modal h1{
     color: black;
 }
+
+.instrument-search input{
+    border-radius: 16px;
+    border-width: 2px;
+}
+.instrument-search label{
+    display: none;
+}

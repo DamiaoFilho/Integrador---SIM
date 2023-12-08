@@ -1,13 +1,14 @@
 {% load bootstrap3 %}
 <div class="list-buttons">
+    {% block search %}
     <div class="search col-md-3">
         <div class="search-header">
             <i class="bi bi-search"></i>
             <p>Procurar...</p>
         </div>
     </div>
+    {% endblock search %}
     <section>
-        <div>
             <!-- Button trigger modal -->
             <a class="button" href="#">
                 <div class="button-content" data-bs-toggle="modal" data-bs-target="#filter">
@@ -29,14 +30,11 @@
                     <form action="" method="get" class="form">
                         <div class="modal-body">
                             <div class="filter-form">
-                                {% for field in filter.form %}
-                                <div>
-                                    {% bootstrap_field field %}
-                                </div>
-                                {% endfor %}
-                                </div>
+                                {% block filter-form %}
+                                {% bootstrap_form filter.form layout='inline' %}
+                                {% endblock filter-form %}
                             </div>
-                            <div class="modal-footer">
+                            <div class="modal-footer mt-4">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                 <button type="submit" class="btn btn-success">Filtrar</button>
                             </div>

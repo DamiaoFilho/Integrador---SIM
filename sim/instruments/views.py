@@ -17,7 +17,7 @@ from ..core.views import ListView
 
 class InstrumentCreateView(CreateView):
     model = Instrument
-    template_name = "instrument_create_form.html"
+    template_name = "instruments/instrument_create_form.html"
     form_class = InstrumentForm
     success_url = "/instruments/list/"
 
@@ -31,7 +31,7 @@ class InstrumentCreateView(CreateView):
 
 class InstrumentListView(FilterView, ListView):
     model = Instrument
-    template_name = "instruments_list.html"
+    template_name = "instruments/instruments_list.html"
     paginate_by = 1
     filterset_class = InstrumentFilter
 
@@ -41,7 +41,7 @@ class InstrumentListView(FilterView, ListView):
 class InstrumentUpdateView(UpdateView):
     model = Instrument
     fields = ["image", "name", "model", "brand", "serial_number", "color", "condition"]
-    template_name = "instrument_create_form.html"
+    template_name = "instruments/instrument_create_form.html"
     success_url = "/instruments/list"
 
 class InstrumentDeleteView(DeleteView):
