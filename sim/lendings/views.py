@@ -5,13 +5,13 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import FormView
 from ..core.views import ListView, TableListView, CreateView
-from .models import Lending
+from .models import Lending, Return
 
 from .tables import LendingTable
 from django_tables2 import SingleTableView
 from .tables import LendingFilter
 from ..instruments.models import Instrument
-from .forms import LendingForm
+from .forms import LendingForm, ReturnForm
 # Create your views here.
 
 from django_filters.views import FilterView
@@ -71,3 +71,17 @@ class LendingCreateView(CreateView):
         lending.save()
         return redirect(self.success_url)
 
+
+class ReturnCreateView(CreateView):
+    model = Return
+    template_name = "lendings/return_form.html"
+    success_url = "/lendings/list/"
+    form_class = ReturnForm
+
+    def form_valid(self, form: BaseModelForm) -> HttpResponse:
+        return_form = form.save(commit=False)
+        lending = Lending.objects.get(pk=self.kwargs['pk'])
+        return_form.lending = lending
+
+        return_form.save()
+        return redirect(self.success_url)

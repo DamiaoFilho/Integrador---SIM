@@ -34,7 +34,7 @@ class Lending(models.Model):
 
 class Return(models.Model):
     date = models.DateField(verbose_name="Data de Devolução")
-    photo = models.ImageField(upload_to="media/returns/", verbose_name="Foto de devolução")
+    photo = models.ImageField(upload_to="media/returns/", verbose_name="Foto de devolução", blank=True, null=True)
     commentary = models.TextField(verbose_name="Observações")
     lending = models.OneToOneField(Lending, on_delete=models.CASCADE)
 
