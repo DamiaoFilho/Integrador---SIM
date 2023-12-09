@@ -1,0 +1,56 @@
+{% load static %}
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#m{{ obj.pk }}">Large modal</button>
+
+<div id="m{{ obj.pk }}"class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Filtrar</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+
+        <section class="student-header">
+            <i class="bi bi-person-circle"></i> 
+            <div class="student-content">
+                <div class="name-soli">
+                    <p>{{ obj.student.user.username }}</p>
+                    <p>{{ obj.student.get_year_display }} {{ obj.student.get_course_display }} {{ obj.student.get_shift_display }}</p>
+                </div>
+                <div class="student-sub">
+                    <p>{{ obj.student.register }}</p>
+                </div>
+            </div>
+        </section>
+        <section class="instrument-header">
+            <img src="{{ obj.instrument.image.url }}" alt="">
+            <div class="instrument-content">
+                <span>{{ obj.instrument }}</span>
+                <span>Marca: {{ obj.instrument.model }}</span>
+                <span>Cor: {{ obj.instrument.color }}</span>
+                <span>
+                    {{ obj.instrument.condition }}
+                </span>
+            </div>
+        </section>
+        <section class="main-review">
+            <div class="duration">
+                <span id="init">{{ obj.initDate }}</span>
+                <span id="final">{{ obj.finalDate }}</span>
+            </div>
+            <p>Justificativa</p>
+            <span id="justify-text">{{ obj.justify }}</span>
+        </section>
+
+
+        <div class="modal-footer mt-4">
+            <section class="soli-buttons">
+                <a class="btn btn-danger" href="" role="button">Indeferir</a>
+                <a class="btn btn-success" href="" role="button">Deferir</a>
+            </section>
+        </div>
+
+    </div>
+  </div>
+</div>

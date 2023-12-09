@@ -47,6 +47,8 @@ Instrumentos
                 </div>
                 {% endif %}
                 <div class="card-buttons">
+                    {% for group in request.user.groups.all  %}
+                    {% if group.name == "professor" %}
                     <div class="delete-button">
                         <!-- Button trigger modal -->
                         <button type="button" class="btn modalbtn" data-bs-toggle="modal" data-bs-target="#m{{ obj.id }}">
@@ -60,28 +62,38 @@ Instrumentos
                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                <div class="modal-body">
-                                    <p>Tem certeza?</p>
+                                    <div class="modal-body">
+                                        <p>Tem certeza?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        <a type="button" class="btn btn-danger" href="{% url 'delete' obj.pk %}">Sim</a>
+                                    </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <a type="button" class="btn btn-danger" href="{% url 'delete' obj.pk %}">Sim</a>
-                                </div>
-                            </div>
                             </div>
                         </div>
                     </div>
+                    {% endif %}
+                    {% endfor %}
                     <div class="actions-buttons">
+                        {% for group in request.user.groups.all  %}
+                        {% if group.name == "professor" %}
                         <a href="{% url 'update' obj.pk %}">
                             <div class="card-button update">
                                 <p>Atualizar</p>
                             </div>
                         </a>
-                        <a href="">
+                        {% endif %}
+                        {% if group.name == "student"%}
+                        {% if obj.status == True %}
+                        <a href="{% url 'lendings:create' obj.pk %}">
                             <div class="card-button lend">
-                                <p>Emprestar</p>
+                                <p>Empréstimo</p>
                             </div>
                         </a>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
         </section>

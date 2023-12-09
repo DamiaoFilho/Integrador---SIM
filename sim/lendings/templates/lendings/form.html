@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block page_name %}
+Empréstimos - Abrir Solicitação
+{% endblock %}
+
+{% block content %}
+<div class="card" style="margin-top: 32px; margin-bottom: 32px;">
+  <form class="form create" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="card-body border-top p-9">
+      {% crispy form %}
+      {% include 'pages/_form_buttons.html' %}
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+{% block css %}
+{{ block.super }}
+{{ form.media.css }}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock %}
+
+{% block javascript %}
+{{ block.super }}
+{{ form.media.js }}
+{% endblock %}
+

@@ -9,5 +9,6 @@ app_name = "lendings"
 urlpatterns = [
     path("requests/", LendingRequestsListView.as_view(), name="requests"),
     path("list/", LendingListView.as_view(), name="list"),
-    path("studentRequests/", LendingListView.as_view(), name="studentRequests"),
+    path("studentRequests/", LendingStudentListView.as_view(), name="studentRequests"),
+    path("create/<int:pk>", LendingCreateView.as_view(), name="create")
 ] 

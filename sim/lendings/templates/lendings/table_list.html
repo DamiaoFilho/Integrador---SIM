@@ -1,0 +1,86 @@
+{% extends "pages/list.html" %}
+{% load static %}
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'lendings/lendings_list.css' %}">
+
+{% endblock %}
+
+{% block addLink %}
+
+<a class="button-content" href="{% url 'lendings:lendingAdd' %}">
+
+{% endblock %}
+
+{% block page_name %}
+Empréstimos - Em Andamento
+{% endblock %}
+
+
+{% block content %}
+{{ block.super }}
+
+    {% include "lendings/_list_buttons.html" %}
+    <div class="center-content">
+        
+        
+        <table>
+            <tr>
+                <td class="aluno">Aluno</th>
+                <td class="matricula">Matrícula</td>
+                <td class="instrumentos">Instrumento</td>
+                <td class="instrumentos">Início</td>
+                <td class="instrumentos">Fim</td>
+                <td class="actions">Ações</td>
+            </tr>
+            {% for obj in object_list %}
+            <tr>
+                <td class="aluno">{{ obj.student.user.username }}</td>
+                <td class="matricula">{{ obj.student.register }}</td>
+                <td class="instrumentos">{{ obj.instrument }}</td>
+                <td class="instrumentos">{{ obj.initDate }}</td>
+                <td class="instrumentos">{{ obj.finalDate }}</td>
+                <td class="actions">
+                    <a href="">
+                        <i class="bi bi-arrow-right-circle-fill"></i>
+                        <span>Analisar</span>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <div class="page-buttons">
+            <!-- Crie botões de página conforme necessário -->
+        </div>
+    </div>
+
+    <div class="row pagination">
+        <div class="pagination-items">
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">
+                <div class="left-arrow"><i class="bi bi-caret-left-fill"></i></div>
+            </a>
+            {% else %}
+            <a href="#">
+                <div class="left-arrow"><i class="bi bi-caret-left-fill"></i></div>
+            </a>
+            {% endif %}
+            <div class="pages">
+                <p class="selected">{{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</p>
+            </div>
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">
+                <div class="right-arrow"><i class="bi bi-caret-right-fill"></i></div>
+            </a>
+            {% else %}
+            <a href="#">
+                <div class="right-arrow"><i class="bi bi-caret-right-fill"></i></div>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+    
+{% endblock %}
+    
+

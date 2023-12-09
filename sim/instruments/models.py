@@ -19,8 +19,11 @@ class Instrument(models.Model):
     condition = models.TextField(verbose_name="Condição")
     status = models.BooleanField(default=True, verbose_name="Disponibilidade")
     category = models.ManyToManyField(Category, verbose_name="Categoria")
-
+    type = models.ManyToManyField("InstrumentType", verbose_name="Tipo")
 
     def __str__(self) -> str:
         return self.name
-    
+
+
+class InstrumentType(models.Model):
+    name = models.CharField(verbose_name="Nome")

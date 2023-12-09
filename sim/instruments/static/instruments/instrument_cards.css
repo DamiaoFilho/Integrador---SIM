@@ -33,6 +33,7 @@
 .card-info{
     margin-left: 12px;
     margin-top: 12px;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -56,6 +57,13 @@
 }
 .delete-button i{
     font-size: 16px;
+    height: 16px;
+}
+.delete-button{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
 }
 .card-buttons{
     margin-top: auto;
@@ -65,8 +73,8 @@
     flex-wrap: wrap;
     width: auto;
     gap: 12px;
-    justify-content: space-between;
-    
+    justify-content: flex-end;
+    align-items: center;
 }
 .card-button{
     border-radius: 16px;
@@ -79,8 +87,8 @@
 
 .card-button.lend{
     background-color: #d48e1d;
-}
 
+}
 .instrument-card-img{
     display: flex;
     align-items: center;

@@ -21,5 +21,5 @@ instruments = (
 class LendingForm(forms.ModelForm):
     class Meta:
         model = Lending
-        exclude = ["createDate", "status"]
+        fields = ["initDate", "finalDate", "justify"]
    

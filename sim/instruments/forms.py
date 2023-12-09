@@ -30,6 +30,9 @@ class InstrumentForm(forms.ModelForm):
                 Column("category", css_class="col")
             ),
             Row(
+                Column("type", css_class="col")
+            ),
+            Row(
                 Column("status", css_class="col")
             ),
             Row(

@@ -67,7 +67,7 @@ class Student(Profile):
     course = models.CharField(verbose_name="Curso", choices=CoursesChoices.choices)
     shift = models.CharField(verbose_name="Turno", choices=ShiftChoices.choices)
     is_colleger = models.BooleanField(default=False)    
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="StudentUser")
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="StudentUser")
 
     def __str__(self) -> str:
         return self.user.username
@@ -75,5 +75,5 @@ class Student(Profile):
     
 class Professor(Profile):
     employee_register = models.IntegerField(verbose_name="Número de Servidor")
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="ProfessorUser")
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="ProfessorUser")
     

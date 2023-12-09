@@ -139,9 +139,9 @@
       </div>
       <div id="profile">
             {% if request.user.groups.all.0.name == 'student' %}
-            <img src="{{ request.user.StudentUser.first.photo.url }}" alt="profileIcon">
+            <img src="{{ request.user.StudentUser.photo.url }}" alt="profileIcon">
             {% else %}
-            <img src="{{ request.user.ProfessorUser.first.photo.url }}" alt="profileIcon">
+            <img src="{{ request.user.ProfessorUser.photo.url }}" alt="profileIcon">
             {% endif %}
         </div>
       </div>

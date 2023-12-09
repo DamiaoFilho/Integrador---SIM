@@ -1,8 +1,7 @@
 import django_tables2 as tables
 from .models import Lending
 from django_tables2.utils import A
-from django_filters import FilterSet
-
+import django_filters
 
 class LendingTable(tables.Table):
     class Meta:
@@ -20,7 +19,9 @@ class LendingRequestTable(tables.Table):
 
 
 
-class LendingFilter(FilterSet):
+class LendingFilter(django_filters.FilterSet):
+    student__user__username = django_filters.CharFilter(lookup_expr='icontains', label='Aluno')
+
     class Meta:
         model = Lending
-        fields = {"student": ["exact"], "initDate": ["exact"]}
+        fields = ["student__user__username", "student", "initDate"]

@@ -303,3 +303,11 @@ footer p{
 .filter-form button{
   margin: auto;
 }
+
+.instrument-search input{
+  border-radius: 16px;
+  border-width: 2px;
+}
+.instrument-search label{
+  display: none;
+}
