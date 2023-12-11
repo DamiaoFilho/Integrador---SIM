@@ -39,5 +39,9 @@ class Return(models.Model):
     lending = models.OneToOneField(Lending, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
-        return self.lending
+        return f"{self.lending.student.user.username}: {self.lending.instrument.name}"
+    
+    class Meta:
+        verbose_name = "Devolução"
+        verbose_name_plural = "Devoluções"
 
