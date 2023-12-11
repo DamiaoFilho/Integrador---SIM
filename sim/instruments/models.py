@@ -7,6 +7,10 @@ class Category(models.Model):
 
     def __str__(self) -> str:
         return self.name
+    
+    class Meta:
+        verbose_name = "Categoria"
+        verbose_name_plural = "Categorias"
 
 
 class Instrument(models.Model):
@@ -23,7 +27,18 @@ class Instrument(models.Model):
 
     def __str__(self) -> str:
         return self.name
+    
+    class Meta:
+        verbose_name = "Instrumento"
+        verbose_name_plural = "Instrumentos"
 
 
 class InstrumentType(models.Model):
     name = models.CharField(verbose_name="Nome")
+
+    def __str__(self) -> str:
+        return self.name
+    
+    class Meta:
+        verbose_name = "Tipo de Instrumento"
+        verbose_name_plural = "Tipos de Instrumentos"

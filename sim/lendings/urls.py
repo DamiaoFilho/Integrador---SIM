@@ -11,5 +11,8 @@ urlpatterns = [
     path("list/", LendingListView.as_view(), name="list"),
     path("studentRequests/", LendingStudentListView.as_view(), name="studentRequests"),
     path("create/<int:pk>", LendingCreateView.as_view(), name="create"),
-    path("returnCreate/<int:pk>", ReturnCreateView.as_view(), name="returnCreate")
+    path("returnCreate/<int:pk>", ReturnCreateView.as_view(), name="returnCreate"),
+    path("accept/<int:pk>", AcceptView.as_view(), name="accept"),
+    path("denied/<int:pk>", DeniedView.as_view(), name="denied"),
+    path("returns", ReturnsListView.as_view(), name="returns"),
 ] 

@@ -92,6 +92,20 @@
               {% endfor %}
             </ul>
           </li>
+          {% for group in request.user.groups.all %}
+          {% if group.name == 'professor'%}
+          <li class="item-menu">
+            <a href="#" class="item-menu-link">
+                  <i class="bi bi-calendar4-week"></i>
+                  <Span>Devoluções</Span>
+                  <i class="bi bi-caret-down-fill arrow-sub-menu"></i>
+            </a>
+            <ul class="sub-menu">
+              <a href="{% url 'lendings:returns' %}">Solicitações</a>
+            </ul>
+          </li>
+          {% endif %}
+          {% endfor %}
         </ul>
       </div>
     </nav>

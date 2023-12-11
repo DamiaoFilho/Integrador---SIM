@@ -46,8 +46,10 @@
 
         <div class="modal-footer mt-4">
             <section class="soli-buttons">
+                {% block buttons %}
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 <a class="btn btn-success" href="{% url 'lendings:returnCreate' obj.pk %}" role="button">Registrar Devolução</a>
+                {% endblock buttons %}
             </section>
         </div>
 

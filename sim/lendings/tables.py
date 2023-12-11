@@ -1,5 +1,5 @@
 import django_tables2 as tables
-from .models import Lending
+from .models import Lending, Return
 from django_tables2.utils import A
 import django_filters
 
@@ -25,3 +25,16 @@ class LendingFilter(django_filters.FilterSet):
     class Meta:
         model = Lending
         fields = ["student__user__username", "student", "initDate"]
+
+class LendingFilter(django_filters.FilterSet):
+    student__user__username = django_filters.CharFilter(lookup_expr='icontains', label='Aluno')
+
+    class Meta:
+        model = Lending
+        fields = ["student__user__username", "student", "initDate"]
+
+
+class ReturnFilter(django_filters.FilterSet):
+    class Meta:
+        model = Return
+        fields = ["date", "lending"]

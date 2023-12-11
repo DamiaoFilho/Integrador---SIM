@@ -32,7 +32,7 @@ class InstrumentCreateView(CreateView):
 class InstrumentListView(FilterView, ListView):
     model = Instrument
     template_name = "instruments/instruments_list.html"
-    paginate_by = 1
+    paginate_by = 3
     filterset_class = InstrumentFilter
 
     def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:

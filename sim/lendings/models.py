@@ -13,7 +13,7 @@ class Lending(models.Model):
 
     initDate = models.DateField(verbose_name="Data de Início")
     finalDate = models.DateField(verbose_name="Data de Fim")
-    createDate = models.DateField(auto_now_add=True)
+    created_at = models.DateField(auto_now_add=True)
     active = models.BooleanField(default=True)
 
     justify = models.TextField(verbose_name="Justificativa")
@@ -37,4 +37,7 @@ class Return(models.Model):
     photo = models.ImageField(upload_to="media/returns/", verbose_name="Foto de devolução", blank=True, null=True)
     commentary = models.TextField(verbose_name="Observações")
     lending = models.OneToOneField(Lending, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.lending
 

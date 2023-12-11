@@ -1,0 +1,7 @@
+{% extends 'lendings/_lending_modal.html' %}
+
+{% block buttons %}
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+<a class="btn btn-danger" href="{% url 'lendings:denied' obj.pk %}" role="button">Recusar</a>
+<a class="btn btn-success" href="{% url 'lendings:accept' obj.pk %}" role="button">Aceitar</a>
+{% endblock %}

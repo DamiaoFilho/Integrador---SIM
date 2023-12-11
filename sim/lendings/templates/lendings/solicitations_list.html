@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block page_name %}
-Empréstimos - Em Andamento
+Empréstimos - Solicitações
 {% endblock %}
 
 
@@ -41,10 +41,7 @@ Empréstimos - Em Andamento
                 <td class="instrumentos">{{ obj.initDate }}</td>
                 <td class="instrumentos">{{ obj.finalDate }}</td>
                 <td class="actions">
-                    <a href="">
-                        <i class="bi bi-arrow-right-circle-fill"></i>
-                        <span>Analisar</span>
-                    </a>
+                    {% include "lendings/_analysis_modal.html" %}
                 </td>
             </tr>
             {% endfor %}

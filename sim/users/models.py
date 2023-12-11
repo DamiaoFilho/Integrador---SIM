@@ -76,4 +76,10 @@ class Student(Profile):
 class Professor(Profile):
     employee_register = models.IntegerField(verbose_name="Número de Servidor")
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="ProfessorUser")
-    
+
+    class Meta:
+        verbose_name = "Professor"
+        verbose_name_plural = "Professores"
+
+    def __str__(self) -> str:
+        return self.user.username
