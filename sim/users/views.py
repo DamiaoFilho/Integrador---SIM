@@ -2,6 +2,8 @@ from typing import Any
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.db import models
+from django.forms.forms import BaseForm
 from django.forms.models import BaseModelForm
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.urls import reverse
@@ -10,9 +12,10 @@ from django.views.generic import DetailView, RedirectView, UpdateView, FormView,
 User = get_user_model()
 from django.contrib.auth.models import Group
 from django.shortcuts import redirect
-
+from django.views.generic import UpdateView
 from .forms import StudentUserForm
-
+from ..users.models import Student
+from .forms import StudentForm, UserForm, StudentUpdateForm, ProfessorUpdateForm, StudentMultiUpdateForm
 
 class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
@@ -23,20 +26,25 @@ class UserDetailView(LoginRequiredMixin, DetailView):
 user_detail_view = UserDetailView.as_view()
 
 
-class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
-    model = User
-    fields = ["name"]
-    success_message = _("Information successfully updated")
-
-    def get_success_url(self):
-        assert self.request.user.is_authenticated  # for mypy to know that the user is authenticated
-        return self.request.user.get_absolute_url()
-
+class StudentUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = Student
+    form_class = StudentMultiUpdateForm
+    success_message = ("Informações Atualizadas com sucesso")
+    template_name = "users/profile.html"
+    success_url = "/users/update/"
+    
+    def get_form_kwargs(self):
+        kwargs = super(StudentUpdateView, self).get_form_kwargs()
+        kwargs.update(instance={
+            'user': self.object.user,
+            'student': self.object,
+        })
+        return kwargs
+    
     def get_object(self):
-        return self.request.user
+        return self.request.user.StudentUser
 
 
-user_update_view = UserUpdateView.as_view()
 
 
 class UserRedirectView(LoginRequiredMixin, RedirectView):

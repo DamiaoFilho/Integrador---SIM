@@ -70,7 +70,7 @@ class LendingCreateView(CreateView):
         lending.instrument = instrument
 
         lending.save()
-        return redirect(self.success_url)
+        return  (self.success_url)
 
 
 class ReturnCreateView(CreateView):

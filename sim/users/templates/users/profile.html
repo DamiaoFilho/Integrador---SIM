@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block page_name %}
+Perfil
+{% endblock %}
+
+{% block content %}
+<div class="card mt-4" style="border-radius: 16px;">
+    <div class="card-header" style="background-color: #a7a1da34; border-top-left-radius: 16px; border-top-right-radius: 16px;">
+      {{ request.user.username }} - {% if request.user.groups.all.0.name == "student" %}{{ request.user.StudentUser.register }}{% endif %}
+    </div>
+    <div class="card-body d-flex justify-content-around">
+        <div class="profile-img m-2">
+            {% if request.user.groups.all.0.name == "student" %}
+            <img src="{{ request.user.StudentUser.photo.url }}" alt="">
+            {% else %}
+            <img src="{{ request.user.ProfessorUser.photo.url }}" alt="">
+            {% endif %}
+        </div>
+        <div>
+            <form class="form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="card-body p-9">
+                    {% crispy form %}
+                    <div class="card-footer d-flex justify-content-end py-6 px-9">
+                        <button type="submit" class="btn btn-success btn-md">Atualizar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'users/profile.css' %}">
+{% endblock %}
+
+

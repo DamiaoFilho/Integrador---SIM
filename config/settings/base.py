@@ -83,6 +83,7 @@ THIRD_PARTY_APPS = [
     "django_tables2",
     "django_filters",
     "bootstrap3",
+    "rolepermissions",
 ]
 
 LOCAL_APPS = [
@@ -347,3 +348,5 @@ MESSAGE_TAGS = {
         messages.WARNING: 'alert-warning',
         messages.ERROR: 'alert-danger',
  }
+
+ROLEPERMISSIONS_MODULE = 'sim.users.roles'

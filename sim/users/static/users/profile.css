@@ -1,0 +1,14 @@
+.card-header{
+    display: flex;
+    justify-content: center;
+}
+
+.profile-img img{
+    border-radius: 16px;
+    width: 250px;
+    height: 250px;
+}
+
+.card-body{
+    background-color: #a7a1da34;
+}
