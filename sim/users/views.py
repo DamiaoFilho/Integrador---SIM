@@ -14,8 +14,8 @@ from django.contrib.auth.models import Group
 from django.shortcuts import redirect
 from django.views.generic import UpdateView
 from .forms import StudentUserForm
-from ..users.models import Student
-from .forms import StudentForm, UserForm, StudentUpdateForm, ProfessorUpdateForm, StudentMultiUpdateForm
+from ..users.models import Student, Professor
+from .forms import StudentForm, UserForm, StudentUpdateForm, ProfessorUpdateMultiForm, StudentMultiUpdateForm
 
 class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
@@ -31,7 +31,7 @@ class StudentUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     form_class = StudentMultiUpdateForm
     success_message = ("Informações Atualizadas com sucesso")
     template_name = "users/profile.html"
-    success_url = "/users/update/"
+    success_url = "/users/student/update/"
     
     def get_form_kwargs(self):
         kwargs = super(StudentUpdateView, self).get_form_kwargs()
@@ -44,6 +44,24 @@ class StudentUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     def get_object(self):
         return self.request.user.StudentUser
 
+
+class ProfessorUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = Professor
+    form_class = ProfessorUpdateMultiForm
+    success_message = ("Informações Atualizadas com sucesso")
+    template_name = "users/profile.html"
+    success_url = "/users/professor/update/"
+    
+    def get_form_kwargs(self):
+        kwargs = super(StudentUpdateView, self).get_form_kwargs()
+        kwargs.update(instance={
+            'user': self.object.user,
+            'professor': self.object,
+        })
+        return kwargs
+    
+    def get_object(self):
+        return self.request.user.ProfessorUser
 
 
 

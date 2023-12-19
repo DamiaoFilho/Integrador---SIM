@@ -76,29 +76,16 @@ class StudentMultiUpdateForm(MultiModelForm):
         "user": UserForm,
     }
 
-    layout = Layout(
-        Fieldset(
-            Row("user-email", css_class="col"),
-            Row(
-                Column("student-photo", css_class="col")
-            ),
-            Row(
-                Column("student-phone", css_class="col"),
-            ),
-            Row(
-                Column("student-course", css_class="col"),
-            ),
-            Row(
-                Column("student-year", css_class="col-md-4"),
-                Column("student-shift", css_class="col-md-4"),
-            ),
-        ),
-    )
-
 class ProfessorUpdateForm(forms.ModelForm):
     class Meta:
         model = Professor
         exclude = ["user"]
+
+class ProfessorUpdateMultiForm(MultiModelForm):
+    form_classes = {
+        "professor": ProfessorUpdateForm,
+        "user": UserForm
+    }
 
 
      

@@ -113,7 +113,11 @@
       <div class="nav-items side-item">
         <ul>
           <li>
-            <a class="nav-link" href="{% url 'users:update' %}">
+            {% if request.user.groups.all.0.name == "student" %}
+              <a class="nav-link" href="{% url 'users:studentUpdate' %}">
+            {% else %}
+            <a class="nav-link" href="{% url 'users:professorUpdate' %}">
+            {% endif %}
               <div><i class="bi bi-gear-fill"></i></i>
               </div>
               <div><p>Configurações</p></div>
