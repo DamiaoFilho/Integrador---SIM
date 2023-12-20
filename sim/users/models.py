@@ -33,7 +33,7 @@ class Profile(models.Model):
     class Meta:
         abstract = True
 
-    register = models.IntegerField(verbose_name="Matrícula")
+    register = models.IntegerField(verbose_name="Matrícula", unique=True)
     photo = models.ImageField(verbose_name="Foto de Perfil", blank=True, default='default/profiles/profile.webp')
     phone = models.CharField(verbose_name="Telefone")
 
@@ -66,7 +66,7 @@ class Student(Profile):
     year = models.CharField(verbose_name="Ano", choices=YearChoices.choices)
     course = models.CharField(verbose_name="Curso", choices=CoursesChoices.choices)
     shift = models.CharField(verbose_name="Turno", choices=ShiftChoices.choices)
-    is_colleger = models.BooleanField(default=False)    
+    is_colleger = models.BooleanField(default=False, verbose_name="Bolsista")    
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="StudentUser")
 
     def __str__(self) -> str:

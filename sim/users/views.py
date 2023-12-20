@@ -16,6 +16,11 @@ from django.views.generic import UpdateView
 from .forms import StudentUserForm
 from ..users.models import Student, Professor
 from .forms import StudentForm, UserForm, StudentUpdateForm, ProfessorUpdateMultiForm, StudentMultiUpdateForm
+from ..core.views import ListView
+from django_filters.views import FilterView
+from .filters import StudentFilter
+from django.views.generic import View
+
 
 class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
@@ -53,7 +58,7 @@ class ProfessorUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_url = "/users/professor/update/"
     
     def get_form_kwargs(self):
-        kwargs = super(StudentUpdateView, self).get_form_kwargs()
+        kwargs = super(ProfessorUpdateView, self).get_form_kwargs()
         kwargs.update(instance={
             'user': self.object.user,
             'professor': self.object,
@@ -96,3 +101,29 @@ class StudentSignUpView(CreateView):
             return redirect("/")
         return super().get(request, *args, **kwargs)
 
+
+
+class StudentListView(FilterView, ListView):
+    model = Student
+    template_name = "users/usersList.html"
+    paginate_by = 10
+    filterset_class = StudentFilter
+    
+
+class ChangeStudentGroupView(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        student = Student.objects.get(pk=self.kwargs['pk'])
+        colleger = Group.objects.get(name='colleger')
+        student_group = Group.objects.get(name='student')
+
+        groups = student.user.groups.all()
+
+        if colleger in groups:
+            student.user.groups.remove(colleger)
+            student.is_colleger = True
+        else:
+            student.user.groups.add(colleger)
+            student.is_colleger = False
+
+        student.save()
+        return redirect("/users/student/list")

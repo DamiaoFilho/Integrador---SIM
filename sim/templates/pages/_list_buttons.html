@@ -44,8 +44,9 @@
             </div>
             {% endif %}
         </div>
+        {% block addButton %}
         {% for group in request.user.groups.all %}
-        {% if group.name == "professor" %}
+        {% if group.name == "professor" or group.name == "colleger" %}
             <div class="button add-button">
                 {% block addLink %}
                 <a class="button-content" href="{% url 'add' %}">
@@ -58,5 +59,6 @@
             </div>
         {% endif %}
         {% endfor %}
+        {% endblock addButton %}
     </section>
 </div>

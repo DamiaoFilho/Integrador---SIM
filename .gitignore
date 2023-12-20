@@ -281,3 +281,4 @@ dump.rdb
 sim/media/
 
 .pytest_cache/
+.env

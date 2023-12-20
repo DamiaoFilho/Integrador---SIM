@@ -1,0 +1,29 @@
+{% extends 'pages/_list_buttons.html' %}
+{% load bootstrap3 %}
+
+{% block search %}
+<div class="instrument-search">
+    <form action="" method="get" class="form">
+    {% for field in filter.form  %}
+        {% if field.name == "user__username" %}
+            {% bootstrap_field field %}
+        {% endif %}
+    {% endfor %}
+    </form>
+</div>
+{% endblock %}
+
+
+{% block filter-form %}
+    <form action="" method="get" class="form">
+    {% for field in filter.form  %}
+        {% if field.name != "user__username" %}
+            {% bootstrap_field field %}
+        {% endif %}
+    {% endfor %}
+    </form>
+{% endblock %}
+
+
+{% block addButton %}
+{% endblock  %}

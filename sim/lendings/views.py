@@ -70,7 +70,7 @@ class LendingCreateView(CreateView):
         lending.instrument = instrument
 
         lending.save()
-        return  (self.success_url)
+        return redirect(self.success_url)
 
 
 class ReturnCreateView(CreateView):
@@ -109,10 +109,10 @@ class DeniedView(View):
         
         lending.status = lending.StatusChoices.DENIED
         lending.active = False
-        lending.professor = self.request.user.ProfessorUser
+        lending.responsible = self.request.user
 
         instrument = lending.instrument
-        instrument.status = False
+        instrument.status = True
 
         instrument.save()
         lending.save()
@@ -124,10 +124,10 @@ class AcceptView(View):
         
         lending.status = lending.StatusChoices.IN_PROGRESS
         lending.active = True
-        lending.professor = self.request.user.ProfessorUser
+        lending.responsible = self.request.user
 
         instrument = lending.instrument
-        instrument.status = True
+        instrument.status = False
 
         instrument.save()
         lending.save()

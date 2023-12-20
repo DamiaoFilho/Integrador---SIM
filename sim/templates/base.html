@@ -83,9 +83,11 @@
             <ul class="sub-menu">
               <a href="{% url 'lendings:list' %}">Em andamento</a>
               {% for group in request.user.groups.all %}
-              {% if group.name == 'professor'%}
+
+              {% if group.name == 'professor' or group.name == 'colleger' %}
               <a href="{% url 'lendings:requests' %}">Solicitações</a>
               {% endif %}
+
               {% if group.name == 'student' %}
                 <a href="{% url 'lendings:studentRequests' %}">Minhas Solicitações</a>
               {% endif %}
@@ -93,15 +95,25 @@
             </ul>
           </li>
           {% for group in request.user.groups.all %}
-          {% if group.name == 'professor'%}
+          {% if group.name == 'professor' or group.name == 'colleger' %}
           <li class="item-menu">
             <a href="#" class="item-menu-link">
-                  <i class="bi bi-calendar4-week"></i>
+                  <i class="bi bi-repeat"></i>
                   <Span>Devoluções</Span>
                   <i class="bi bi-caret-down-fill arrow-sub-menu"></i>
             </a>
             <ul class="sub-menu">
               <a href="{% url 'lendings:returns' %}">Solicitações</a>
+            </ul>
+          </li>
+          <li class="item-menu">
+            <a href="#" class="item-menu-link">
+                  <i class="bi bi-people-fill"></i>
+                  <Span>Usuários</Span>
+                  <i class="bi bi-caret-down-fill arrow-sub-menu"></i>
+            </a>
+            <ul class="sub-menu">
+              <a href="{% url 'users:studentList' %}">Alunos</a>
             </ul>
           </li>
           {% endif %}
@@ -149,9 +161,14 @@
         <span><p id="username">{{ request.user.username }}</p></span>
         {% for group in request.user.groups.all %}
           {% if group.name == 'student' %}
-          <span><p id="function">Estudante</p></span>
-          {% else %}
-          <span><p id="function">Admin</p></span>
+            {% if request.user.groups.all.1 %}
+            <span><p id="function">Bolsista</p></span>
+            {% else %}
+            <span><p id="function">Estudante</p></span>
+            {% endif %}
+          {% endif %}
+          {% if group.name == 'professor' %}
+          <span><p id="function">Professor</p></span>
           {% endif %}
         {% endfor %}
       </div>

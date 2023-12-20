@@ -20,7 +20,7 @@ class Lending(models.Model):
     status = models.CharField(verbose_name="Status", choices=StatusChoices.choices, default=StatusChoices.IN_ANALISYS)
 
     instrument = models.ForeignKey(Instrument, on_delete=models.CASCADE, verbose_name="Instrumento")
-    professor = models.ForeignKey(Professor, on_delete=models.CASCADE, related_name="professor", verbose_name="Professor", blank=True, null=True)
+    responsible = models.ForeignKey(User, on_delete=models.CASCADE, related_name="responsible", verbose_name="Responsável", blank=True, null=True)
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="student", verbose_name="Estudante")
 
     def __str__(self) -> str:
