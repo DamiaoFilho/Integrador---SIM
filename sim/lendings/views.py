@@ -7,7 +7,8 @@ from django.views.generic import FormView
 from ..core.views import ListView, TableListView, CreateView
 from .models import Lending, Return
 from django.views.generic import View
-
+from django.utils import timezone
+from datetime import timedelta
 from .tables import LendingTable
 from django_tables2 import SingleTableView
 from .tables import LendingFilter, ReturnFilter
@@ -62,15 +63,35 @@ class LendingCreateView(CreateView):
     form_class = LendingForm
 
     def form_valid(self, form: BaseModelForm) -> HttpResponse:
-        lending = form.save(commit=False)
-        lending.student = self.request.user.StudentUser
-        instrument = Instrument.objects.get(pk=self.kwargs['pk'])
-        instrument.status = False
-        instrument.save()
-        lending.instrument = instrument
+        student = self.request.user.StudentUser
+        lendings = Lending.objects.filter(student=student)
+        can_create = True
 
-        lending.save()
-        return redirect(self.success_url)
+
+        if student.has_penalty == True:
+
+            if student.penalty_end < timezone.now().date():
+                student.penalty_end = None
+                student.has_penalty = False
+            else:
+                return redirect(self.success_url)
+
+        for l in lendings:
+            if l.active == True:
+                can_create = False
+
+        if can_create:
+            lending = form.save(commit=False)
+            lending.student = student
+            instrument = Instrument.objects.get(pk=self.kwargs['pk'])
+            instrument.status = False
+            instrument.save()
+            lending.instrument = instrument
+
+            lending.save()
+            return redirect(self.success_url)
+        else:
+            return redirect(self.success_url)
 
 
 class ReturnCreateView(CreateView):
@@ -83,6 +104,7 @@ class ReturnCreateView(CreateView):
         return_form = form.save(commit=False)
         lending = Lending.objects.get(pk=self.kwargs['pk'])
         return_form.lending = lending
+        student = lending.student
 
         lending.status = lending.StatusChoices.FINISHED
         lending.active = False
@@ -90,9 +112,14 @@ class ReturnCreateView(CreateView):
         instrument = lending.instrument
         instrument.status = True
 
+        if lending.finalDate < timezone.now().date():
+            student.has_penalty = True
+            student.penalty_end = timezone.now().date() + timedelta(days=7)
+
         lending.save()
         instrument.save()
         return_form.save()
+        student.save()
         return redirect(self.success_url)
     
 

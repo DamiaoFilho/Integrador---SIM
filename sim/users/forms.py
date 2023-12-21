@@ -51,7 +51,7 @@ class UserSocialSignupForm(SocialSignupForm):
 class StudentForm(forms.ModelForm):
     class Meta:
         model = Student
-        exclude = ["user", "is_colleger"]
+        exclude = ["user", "is_colleger", "has_penalty", "penalty_end"]
 
 class UserForm(forms.ModelForm):
     class Meta:
@@ -68,7 +68,7 @@ class StudentUserForm(MultiModelForm):
 class StudentUpdateForm(forms.ModelForm):
     class Meta:
         model = Student
-        exclude = ["register", "user", "is_colleger"]
+        exclude = ["register", "user", "is_colleger", "has_penalty"]
 
 class StudentMultiUpdateForm(MultiModelForm):
     form_classes = {
@@ -88,4 +88,9 @@ class ProfessorUpdateMultiForm(MultiModelForm):
     }
 
 
+class ProfessorSignUpForm(MultiModelForm):
+    form_classes = {
+        "professor": ProfessorUpdateForm,
+        "user": UserSignupForm
+    }
      

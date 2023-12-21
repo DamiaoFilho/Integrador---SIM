@@ -68,13 +68,16 @@ class Student(Profile):
     shift = models.CharField(verbose_name="Turno", choices=ShiftChoices.choices)
     is_colleger = models.BooleanField(default=False, verbose_name="Bolsista")    
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="StudentUser")
+    
+    has_penalty = models.BooleanField(default=False, verbose_name="Tem punição")
+    penalty_end = models.DateField(verbose_name="Fim da punição", null=True, blank=True)
 
     def __str__(self) -> str:
         return self.user.username
     
     
 class Professor(Profile):
-    employee_register = models.IntegerField(verbose_name="Número de Servidor")
+    employee_register = models.IntegerField(verbose_name="Número de Servidor", blank=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="ProfessorUser")
 
     class Meta:

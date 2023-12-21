@@ -6,7 +6,9 @@ from sim.users.views import (
     StudentUpdateView,
     ProfessorUpdateView,
     StudentListView,
-    ChangeStudentGroupView
+    ChangeStudentGroupView,
+    ProfessorListView,
+    ProfessorCreateView
 )
 
 app_name = "users"
@@ -16,5 +18,7 @@ urlpatterns = [
     path("professor/update/", ProfessorUpdateView.as_view(), name="professorUpdate"),
     path("<str:username>/", view=user_detail_view, name="detail"),
     path("student/list", StudentListView.as_view(), name="studentList"),
-    path("student/changeGroup/<int:pk>", ChangeStudentGroupView.as_view(), name="studentChangeGroup")
+    path("student/changeGroup/<int:pk>", ChangeStudentGroupView.as_view(), name="studentChangeGroup"),
+    path("professor/list", ProfessorListView.as_view(), name="professorList"),
+    path("professor/create", ProfessorCreateView.as_view(), name="create")
 ]

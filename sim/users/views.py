@@ -13,14 +13,13 @@ User = get_user_model()
 from django.contrib.auth.models import Group
 from django.shortcuts import redirect
 from django.views.generic import UpdateView
-from .forms import StudentUserForm
+from .forms import StudentUserForm, ProfessorSignUpForm
 from ..users.models import Student, Professor
 from .forms import StudentForm, UserForm, StudentUpdateForm, ProfessorUpdateMultiForm, StudentMultiUpdateForm
 from ..core.views import ListView
 from django_filters.views import FilterView
-from .filters import StudentFilter
+from .filters import StudentFilter, ProfessorFilter
 from django.views.generic import View
-
 
 class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
@@ -114,16 +113,42 @@ class ChangeStudentGroupView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         student = Student.objects.get(pk=self.kwargs['pk'])
         colleger = Group.objects.get(name='colleger')
-        student_group = Group.objects.get(name='student')
 
         groups = student.user.groups.all()
 
         if colleger in groups:
             student.user.groups.remove(colleger)
-            student.is_colleger = True
+            student.is_colleger = False
         else:
             student.user.groups.add(colleger)
-            student.is_colleger = False
+            student.is_colleger = True
 
         student.save()
         return redirect("/users/student/list")
+    
+
+
+class ProfessorListView(FilterView, ListView):
+    model = Professor
+    template_name = "users/professorsList.html"
+    paginate_by = 10
+    filterset_class = ProfessorFilter
+
+
+class ProfessorCreateView(LoginRequiredMixin, CreateView):
+    model = Professor
+    template_name = "users/professor_create.html"
+    form_class = ProfessorSignUpForm
+
+    success_url = "/users/professor/list"
+
+    def form_valid(self, form: BaseModelForm) -> HttpResponse:
+        professor_group = Group.objects.get(name='professor')
+
+        professor = form["professor"].save(commit=False)
+        professor.user = form["user"].save(self.request)
+
+        professor.user.groups.add(professor_group)
+
+        professor.save()
+        return redirect(self.success_url)

@@ -1,0 +1,19 @@
+{% extends "pages/form.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_name %}
+Professor - Adicionar
+{% endblock %}
+
+
+{% block content %}
+<div class="card" style="margin-top: 32px; margin-bottom: 32px;">
+  <form class="form create" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="card-body border-top p-9">
+      {% crispy form %}
+      {% include 'pages/_form_buttons.html' %}
+    </div>
+  </form>
+</div>
+{% endblock %}

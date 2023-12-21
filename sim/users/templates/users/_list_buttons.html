@@ -26,4 +26,18 @@
 
 
 {% block addButton %}
+{% for group in request.user.groups.all %}
+        {% if group.name == "professor" %}
+            <div class="button add-button">
+                {% block addLink %}
+                <a class="button-content" href="{% url 'users:create' %}">
+                {% endblock addLink %}
+                    <div class="button-content">
+                        <i class="bi bi-plus"></i>
+                        <p>Adicionar</p>
+                    </div>
+                </a>
+            </div>
+        {% endif %}
+        {% endfor %}
 {% endblock  %}
