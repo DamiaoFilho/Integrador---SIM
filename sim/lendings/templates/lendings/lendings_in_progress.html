@@ -19,7 +19,7 @@ Empréstimos - Em Andamento
 {% block content %}
 {{ block.super }}
 
-    {% include "lendings/_list_buttons.html" %}
+    {% include "lendings/buttons/_lendings_buttons.html" %}
     <div class="center-content">
         
         
@@ -30,7 +30,14 @@ Empréstimos - Em Andamento
                 <td class="instrumentos">Instrumento</td>
                 <td class="instrumentos">Início</td>
                 <td class="instrumentos">Fim</td>
+                {% for group in request.user.groups.all %}
+                {% if group.name == "professor" %}
+                    <td class="actions">Ações</td>
+                {% endif %}
+                {% if group.name == "colleger" %}
                 <td class="actions">Ações</td>
+                {% endif %}
+                {% endfor %}
             </tr>
             {% for obj in object_list %}
             <tr>
@@ -39,9 +46,18 @@ Empréstimos - Em Andamento
                 <td class="instrumentos">{{ obj.instrument }}</td>
                 <td class="instrumentos">{{ obj.initDate }}</td>
                 <td class="instrumentos">{{ obj.finalDate }}</td>
-                <td class="actions">
-                    {% include "lendings/_lending_modal.html" %}
-                </td>
+                {% for group in request.user.groups.all %}
+                {% if group.name == "professor" %}
+                    <td class="actions">
+                        {% include "lendings/_lending_modal.html" %}
+                    </td>
+                {% endif %}
+                {% if group.name == "colleger" %}
+                    <td class="actions">
+                        {% include "lendings/_lending_modal.html" %}
+                    </td>
+                {% endif %}
+                {% endfor %}
             </tr>
             {% endfor %}
         </table>

@@ -44,13 +44,17 @@ class InstrumentUpdateView(UpdateView):
     template_name = "instruments/instrument_create_form.html"
     success_url = "/instruments/list"
 
+    def form_valid(self, form: BaseModelForm) -> HttpResponse:
+        messages.success(self.request, f"Instrumento atualizado com sucesso")
+        return super().form_valid(form)
+
 class InstrumentDeleteView(DeleteView):
     model = Instrument
     success_url = "/instruments/list/"
 
     def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
         self.delete(self.request, self.get_object())
-        messages.success(self.request, "Instrumento criado com sucesso")
+        messages.success(self.request, "Instrumento deletado com sucesso")
         return redirect(self.success_url)
 
 

@@ -7,7 +7,8 @@ from django.views.generic import TemplateView
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
 from django.contrib.auth.views import LoginView, LogoutView
-from sim.users.views import StudentSignUpView
+from sim.users.views import StudentSignUpView, LoginView
+
 
 urlpatterns = [
     path("about/", TemplateView.as_view(template_name="pages/about.html"), name="about"),
@@ -18,7 +19,7 @@ urlpatterns = [
     # User management
     path("users/", include("sim.users.urls", namespace="users")),
     path("signup/", StudentSignUpView.as_view(), name="signup"),
-    path("login/", LoginView.as_view(template_name="account/login.html", redirect_authenticated_user=True), name="login"),
+    path("login/", LoginView.as_view(), name="login"),
     path("logout/", LogoutView.as_view(next_page="/login/"), name="logout"),
 
     # Your stuff: custom urls includes go here

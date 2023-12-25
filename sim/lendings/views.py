@@ -11,9 +11,10 @@ from django.utils import timezone
 from datetime import timedelta
 from .tables import LendingTable
 from django_tables2 import SingleTableView
-from .tables import LendingFilter, ReturnFilter
+from .tables import LendingFilter, ReturnFilter, LendingStudentFilter
 from ..instruments.models import Instrument
 from .forms import LendingForm, ReturnForm
+from django.contrib import messages
 # Create your views here.
 
 from django_filters.views import FilterView
@@ -47,7 +48,7 @@ class LendingStudentListView(FilterView, ListView):
     model = Lending
     template_name = "lendings/student_requests.html"
     paginate_by = 10
-    filterset_class = LendingFilter
+    filterset_class = LendingStudentFilter
 
     def get_queryset(self) -> QuerySet[Any]:
         query = Lending.objects.filter(student=self.request.user.StudentUser).order_by("created_at")
@@ -74,6 +75,7 @@ class LendingCreateView(CreateView):
                 student.penalty_end = None
                 student.has_penalty = False
             else:
+                messages.error(self.request, "Não foi possível solicitar o empréstimo pois você ainda possui um penalidade aplicada")
                 return redirect(self.success_url)
 
         for l in lendings:
@@ -89,8 +91,10 @@ class LendingCreateView(CreateView):
             lending.instrument = instrument
 
             lending.save()
+            messages.success(self.request, "Solicitação de empréstimo criado com sucesso")
             return redirect(self.success_url)
         else:
+            messages.warning(self.request, "Não foi possível solicitar o empréstimo pois você ainda possui um solicitação em aberto")
             return redirect(self.success_url)
 
 
@@ -120,6 +124,7 @@ class ReturnCreateView(CreateView):
         instrument.save()
         return_form.save()
         student.save()
+        messages.success(self.request, "Devolução criada com sucesso")
         return redirect(self.success_url)
     
 
@@ -143,6 +148,7 @@ class DeniedView(View):
 
         instrument.save()
         lending.save()
+        messages.success(self.request, "Solicitação indeferida com sucesso")
         return redirect("/lendings/requests/")
 
 class AcceptView(View):
@@ -158,5 +164,21 @@ class AcceptView(View):
 
         instrument.save()
         lending.save()
+        messages.success(self.request, "Solicitação deferida com sucesso")
         return redirect("/lendings/requests/")
     
+
+class CancelView(View):
+    def get(self, request, *args, **kwargs):
+        lending = Lending.objects.get(pk=self.kwargs['pk'])
+        
+        lending.status = lending.StatusChoices.CANCELED
+        lending.active = False
+
+        instrument = lending.instrument
+        instrument.status = True
+
+        instrument.save()
+        lending.save()
+        messages.success(self.request, "Solicitação cancelada com sucesso")
+        return redirect("/lendings/requests/")

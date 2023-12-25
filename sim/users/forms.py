@@ -68,7 +68,7 @@ class StudentUserForm(MultiModelForm):
 class StudentUpdateForm(forms.ModelForm):
     class Meta:
         model = Student
-        exclude = ["register", "user", "is_colleger", "has_penalty"]
+        exclude = ["register", "user", "is_colleger", "has_penalty", "penalty_end"]
 
 class StudentMultiUpdateForm(MultiModelForm):
     form_classes = {
