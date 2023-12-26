@@ -73,11 +73,31 @@ class StudentUpdateForm(forms.ModelForm):
         model = Student
         exclude = ["register", "user", "is_colleger", "has_penalty", "penalty_end"]
 
+
+
 class StudentMultiUpdateForm(MultiModelForm):
     form_classes = {
         "student": StudentUpdateForm,
         "user": UserForm,
     }
+
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.helper = FormHelper()
+    #     self.helper.layout = Layout(
+    #     Row(
+    #         Column("student-photo", css_class="col-sm-12 col-md-12"),
+    #     ),
+    #     Row(
+    #         Column("student-register", css_class="col-sm-12 col-md-6"),
+    #         Column("phone", css_class="col-sm-12 col-md-6"),
+    #     ),
+    #     Row(
+    #         Column("year", css_class="col-sm-12 col-md-4"),
+    #         Column("course", css_class="col-sm-12 col-md-4"),
+    #         Column("shift", css_class="col-sm-12 col-md-4"),
+    #     ),
+    #     )
 
 class ProfessorUpdateForm(forms.ModelForm):
     class Meta:

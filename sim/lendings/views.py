@@ -172,7 +172,11 @@ class AcceptView(PermissionRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         lending = Lending.objects.get(pk=self.kwargs['pk'])
-        
+
+        if lending.student.user.groups.filter(name="colleger").exists():
+            messages.warning(self.request, "Um solicitação de bolsista só pode ser aceita por professores")
+            return redirect("/lendings/requests/")
+
         lending.status = lending.StatusChoices.IN_PROGRESS
         lending.active = True
         lending.responsible = self.request.user
@@ -186,8 +190,7 @@ class AcceptView(PermissionRequiredMixin, View):
         return redirect("/lendings/requests/")
     
 
-class CancelView(PermissionRequiredMixin, View):
-    permission_required = "lendings.add_return"
+class CancelView(View):
     
     def get(self, request, *args, **kwargs):
         lending = Lending.objects.get(pk=self.kwargs['pk'])

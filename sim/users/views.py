@@ -38,7 +38,6 @@ user_detail_view = UserDetailView.as_view()
 class StudentUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Student
     form_class = StudentMultiUpdateForm
-    success_message = ("Informações Atualizadas com sucesso")
     template_name = "users/profile.html"
     success_url = "/users/student/update/"
     
