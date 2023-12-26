@@ -46,7 +46,7 @@ Alunos - Listagem
                     {% endif %}
                 </td>
                 {% if request.user.groups.all.0.name == "professor" %}
-                <td class="actions">
+                <td class="actions action-link">
                     {% if obj.user.groups.all.1 %}
                     <a href="{% url 'users:studentChangeGroup' obj.pk %}">
                         <i class="bi bi-person-dash-fill"></i>

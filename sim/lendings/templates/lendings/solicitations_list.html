@@ -49,13 +49,17 @@ Empréstimos - Solicitações
                 <td class="instrumentos">{{ obj.finalDate }}</td>
                 {% for group in request.user.groups.all %}
                 {% if group.name == "professor" %}
-                <td class="instrumentos">
-                    {% include "lendings/_analysis_modal.html" %}
+                <td class="actions action-link">
+                    <a href="{% url 'lendings:analysis' obj.pk %}">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
                 </td>
                 {% endif %}
                 {% if group.name == "colleger" %}
-                <td class="instrumentos">
-                    {% include "lendings/_analysis_modal.html" %}
+                <td class="actions action-link">
+                    <a href="{% url 'lendings:analysis' obj.pk %}">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
                 </td>
                 {% endif %}
             </tr>

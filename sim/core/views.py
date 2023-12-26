@@ -3,6 +3,7 @@ from django.views.generic import CreateView as DjangoCreateView
 from django.views.generic import ListView as DjangoListView
 from django.views.generic import DeleteView as DjangoDeleteView
 from django.views.generic import UpdateView as DjangoUpdateView
+from django.views.generic import DetailView as DjangoDetailView
 from django_filters.views import FilterView
 from django_tables2.views import SingleTableMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -19,6 +20,9 @@ class DeleteView(LoginRequiredMixin, DjangoDeleteView):
     login_url = "/login/"
 
 class ListView(LoginRequiredMixin, DjangoListView):
+    login_url = "/login/"
+
+class DetailView(LoginRequiredMixin, DjangoDetailView):
     login_url = "/login/"
 
 class DashBoardView(ListView):

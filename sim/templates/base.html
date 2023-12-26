@@ -130,7 +130,7 @@
       <div class="nav-items side-item">
         <ul>
           <li>
-            {% if request.user.groups.all.0.name == "student" %}
+            {% if request.user.groups.all.0.name == "student" or  request.user.groups.all.1.name == "colleger" %}
               <a class="nav-link" href="{% url 'users:studentUpdate' %}">
             {% else %}
             <a class="nav-link" href="{% url 'users:professorUpdate' %}">

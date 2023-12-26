@@ -329,3 +329,9 @@ footer p{
 #progressBarInner, #progressBar{
   height: 10px;
 }
+
+
+
+.action-link{
+  color: black;
+}

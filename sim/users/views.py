@@ -25,7 +25,7 @@ from .filters import StudentFilter, ProfessorFilter
 from django.views.generic import View
 from django.contrib import messages
 from django.contrib.auth.views import LoginView as DjangoLoginView
-
+from django.contrib.auth.mixins import PermissionRequiredMixin
 class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
     slug_field = "username"
@@ -117,14 +117,16 @@ class StudentSignUpView(CreateView):
 
 
 
-class StudentListView(FilterView, ListView):
+class StudentListView(PermissionRequiredMixin, FilterView, ListView):
     model = Student
     template_name = "users/usersList.html"
     paginate_by = 10
     filterset_class = StudentFilter
-    
+    permission_required = "lendings.add_return"
 
-class ChangeStudentGroupView(LoginRequiredMixin, View):
+class ChangeStudentGroupView(PermissionRequiredMixin, LoginRequiredMixin, View):
+    permission_required = "lendings.add_return"
+
     def get(self, request, *args, **kwargs):
         student = Student.objects.get(pk=self.kwargs['pk'])
         colleger = Group.objects.get(name='colleger')
@@ -147,7 +149,8 @@ class ChangeStudentGroupView(LoginRequiredMixin, View):
     
 
 
-class ProfessorListView(FilterView, ListView):
+class ProfessorListView(PermissionRequiredMixin, FilterView, ListView):
+    permission_required = "lendings.add_return"
     model = Professor
     template_name = "users/professorsList.html"
     paginate_by = 10
@@ -161,10 +164,11 @@ class ProfessorListView(FilterView, ListView):
         return queryset
 
 
-class ProfessorCreateView(LoginRequiredMixin, CreateView):
+class ProfessorCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
     model = Professor
     template_name = "users/professor_create.html"
     form_class = ProfessorSignUpForm
+    permission_required = "lendings.add_return"
 
     success_url = "/users/professor/list"
 

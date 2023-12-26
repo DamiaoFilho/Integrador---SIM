@@ -12,7 +12,7 @@ Perfil
     </div>
     <div class="card-body d-flex justify-content-around">
         <div class="profile-img m-2">
-            {% if request.user.groups.all.0.name == "student" %}
+            {% if request.user.groups.all.0.name == "student" or request.user.groups.all.1.name == "colleger" %}
             <img src="{{ request.user.StudentUser.photo.url }}" alt="">
             {% else %}
             <img src="{{ request.user.ProfessorUser.photo.url }}" alt="">

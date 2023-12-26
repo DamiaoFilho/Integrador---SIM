@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'lendings/solicitation_detail.css' %}">
+{% endblock %}
+
+{% block page_name %}
+Empréstimo - Detalhes
+{% endblock %}
+
+
+{% block content %}
+<div class="card" style="margin-top: 32px; margin-bottom: 32px;">
+    <div class="card-header" style="background-color: white; border-top-left-radius: 16px; border-top-right-radius: 16px;">
+        <strong>{{ object.student.user.username }} ({{ object.student.register }})</strong>
+    </div>
+    <div class="card-body">
+        <div>
+            <span>
+                <strong>{{ object.student.get_year_display }} - {{ object.student.get_course_display }} - {{ object.student.get_shift_display }}</strong>
+            </span>
+        </div>
+        <section class="main-info">
+            <div class="instrument-header">
+                <img src="{{ object.instrument.image.url }}" alt="">
+            </div>
+            <section class="lending-info">
+                <span><strong>Início: </strong>{{ object.initDate }}</span>
+                <span><strong>Fim: </strong>{{ object.initDate }}</span>
+                <span><strong>Justificativa</strong></span>
+                <span>{{ object.justify }}</span>
+            </section>
+        </section>
+    </div>
+    <div class="card-footer py-6 px-9" style="background-color: white; border-bottom-right-radius: 16px; border-bottom-left-radius: 16px;">
+        {% block accept-buttons %}
+        <a class="btn btn-secondary" href="{% url 'lendings:list' %}" role="button">Voltar</a>
+        <a class="btn btn-success" href="{% url 'lendings:returnCreate' object.pk %}" role="button">Registrar Devolução</a>
+        {% endblock accept-buttons %}
+    </div>
+</div>
+{% endblock %}

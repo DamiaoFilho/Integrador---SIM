@@ -41,7 +41,7 @@ Professores - Listagem
                 {% if request.user.groups.all.0.name == "professor" %}
                 <td class="actions">
                     <!-- Button trigger modal -->
-                    <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#m{{ obj.id }}">
+                    <a href="#" class="action-link" type="button" data-bs-toggle="modal" data-bs-target="#m{{ obj.id }}">
                         <i class="bi bi-person-fill-x"></i>
                     </a>
                     <!-- Modal -->

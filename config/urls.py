@@ -12,6 +12,7 @@ from sim.users.views import StudentSignUpView, LoginView
 
 urlpatterns = [
     path("about/", TemplateView.as_view(template_name="pages/about.html"), name="about"),
+    path("select2/", include("django_select2.urls")),
 
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
@@ -26,6 +27,7 @@ urlpatterns = [
     path("instruments/", include('sim.instruments.urls')),
     path("lendings/", include("sim.lendings.urls", namespace="lendings")),
     path("", include("sim.core.urls")),
+    
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # API URLS
