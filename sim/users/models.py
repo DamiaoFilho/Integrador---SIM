@@ -33,7 +33,7 @@ class Profile(models.Model):
     class Meta:
         abstract = True
 
-    register = models.IntegerField(verbose_name="Matrícula", unique=True)
+    register = models.CharField(verbose_name="Matrícula", unique=True)
     photo = models.ImageField(verbose_name="Foto de Perfil", blank=True, default='default/profiles/profile.webp')
     phone = models.CharField(verbose_name="Telefone")
 

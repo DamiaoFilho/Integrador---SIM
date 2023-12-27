@@ -87,7 +87,7 @@
 
 .card-button.lend{
     background-color: #d48e1d;
-
+    padding: 5px;
 }
 .instrument-card-img{
     display: flex;

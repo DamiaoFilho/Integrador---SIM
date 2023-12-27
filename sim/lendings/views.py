@@ -121,12 +121,14 @@ class ReturnCreateView(PermissionRequiredMixin, CreateView):
         if lending.finalDate < timezone.now().date():
             student.has_penalty = True
             student.penalty_end = timezone.now().date() + timedelta(days=7)
+            messages.warning(self.request, "Devolução criada com sucesso com aplicação de punição por atraso")
+        else:
+            messages.success(self.request, "Devolução criada com sucesso")
 
         lending.save()
         instrument.save()
         return_form.save()
         student.save()
-        messages.success(self.request, "Devolução criada com sucesso")
         return redirect(self.success_url)
     
 

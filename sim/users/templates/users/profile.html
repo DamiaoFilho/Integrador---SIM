@@ -9,7 +9,7 @@ Perfil
 <form class="form" method="post" enctype="multipart/form-data">
 <div class="card mt-4" style="border-radius: 16px;">
     <div class="card-header" style="background-color: #a7a1da34; border-top-left-radius: 16px; border-top-right-radius: 16px;">
-      {{ request.user.username }} - {% if request.user.groups.all.0.name == "student" %}{{ request.user.StudentUser.register }}{% endif %}
+      <strong>{{ request.user.username }}{% if request.user.groups.all.0.name == "student" or request.user.groups.all.0.name == "colleger" %} - {{ request.user.StudentUser.register }}{% endif %}</strong>
     </div>
         {% csrf_token %}
         <div class="card-body p-9">

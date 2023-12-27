@@ -56,14 +56,14 @@
       </a>
     </div>
     <nav class="side-item">
-      <div class="nav-title">
+      <a href="{% url 'home' %}" class="nav-title">
         <div>
           <i class="bi bi-columns-gap"></i>
         </div>
         <div>
-          <p>Menu</p>
+          <p>Dashboard</p>
         </div>
-      </div>
+      </a>
       <div class="nav-items">
         <ul class="navbar-items">
           <li>
@@ -159,8 +159,12 @@
       </h1>
     </div>
     <div class="user">
-      <div id="bell">
-        <img src="{% static '\images\icons\bell.png' %}" alt="">
+      <div id="profile">
+        {% if request.user.groups.all.0.name == 'student' or request.user.groups.all.0.name == 'colleger' %}
+        <img src="{{ request.user.StudentUser.photo.url }}" alt="profileIcon">
+        {% else %}
+        <img src="{{ request.user.ProfessorUser.photo.url }}" alt="profileIcon">
+        {% endif %}
       </div>
       <div class="name">
         <span><p id="username">{{ request.user.username }}</p></span>
@@ -177,17 +181,10 @@
           {% endif %}
         {% endfor %}
       </div>
-      <div id="profile">
-            {% if request.user.groups.all.0.name == 'student' or request.user.groups.all.0.name == 'colleger' %}
-            <img src="{{ request.user.StudentUser.photo.url }}" alt="profileIcon">
-            {% else %}
-            <img src="{{ request.user.ProfessorUser.photo.url }}" alt="profileIcon">
-            {% endif %}
-        </div>
       </div>
   </div>
   <main>
-    <div class="container mb-4">
+    <div class="container">
       {% include '_messages.html' %}
       {% block content %}
       {% endblock content %}

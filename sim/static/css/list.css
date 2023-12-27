@@ -86,6 +86,7 @@
     border-radius: 16px;
     display: flex;
     justify-content: center;
+    padding-bottom: 24px;
 }
 
 .pagination-items{

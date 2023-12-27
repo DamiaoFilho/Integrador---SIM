@@ -121,7 +121,7 @@ Instrumentos
                         {% endif %}
                         {% if group.name == "student"%}
                         {% if obj.status == True %}
-                        <a href="{% url 'lendings:create' obj.pk %}">
+                        <a id="lend-link" href="{% url 'lendings:create' obj.pk %}">
                             <div class="card-button lend">
                                 <p>Empréstimo</p>
                             </div>

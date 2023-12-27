@@ -49,3 +49,10 @@
     color: black;
 }
 
+.select2-selection__rendered label{ 
+    color: black;
+}
+    
+.select2-results { 
+    color: black;
+ }
