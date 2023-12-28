@@ -10,6 +10,7 @@ class Lending(models.Model):
         IN_ANALISYS = ("IN_ANALISYS", "Em análise")
         DENIED = ("DENIED", "Indeferida")
         FINISHED = ("FINISHED", "Finalizado")
+        CANCELED = ("CANCELED", "Cancelado")
 
     initDate = models.DateField(verbose_name="Data de Início")
     finalDate = models.DateField(verbose_name="Data de Fim")

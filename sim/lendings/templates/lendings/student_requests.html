@@ -20,10 +20,8 @@ Empréstimos - Em Andamento
 {% block content %}
 {{ block.super }}
 
-    {% include "lendings/_list_buttons.html" %}
+    {% include "lendings/buttons/_student_requests_list_buttons.html" %}
     <div class="center-content">
-        
-        
         <table>
             <tr>
                 <td class="instrumentos">Instrumento</td>
@@ -36,7 +34,35 @@ Empréstimos - Em Andamento
                 <td class="instrumentos">{{ obj.instrument }}</td>
                 <td class="instrumentos">{{ obj.initDate }}</td>
                 <td class="instrumentos">{{ obj.finalDate }}</td>
-                <td class="instrumentos">{{ obj.get_status_display }}</td>
+                <td class="instrumentos">
+                    <div class="delete-button">
+                        <!-- Button trigger modal -->
+                        {{ obj.get_status_display }}
+                        {% if obj.get_status_display == "Em análise" %}
+                        <button type="button" class="btn modalbtn" data-bs-toggle="modal" data-bs-target="#m{{ obj.id }}">
+                            <i class="bi bi-x-circle"></i>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="m{{ obj.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Cancelar</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Tem certeza?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        <a type="button" class="btn btn-danger" href="{% url 'lendings:cancel' obj.pk %}">Sim</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </td>
             </tr>
             {% endfor %}
         </table>

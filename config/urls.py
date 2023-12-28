@@ -7,10 +7,12 @@ from django.views.generic import TemplateView
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
 from django.contrib.auth.views import LoginView, LogoutView
-from sim.users.views import StudentSignUpView
+from sim.users.views import StudentSignUpView, LoginView
+
 
 urlpatterns = [
     path("about/", TemplateView.as_view(template_name="pages/about.html"), name="about"),
+    path("select2/", include("django_select2.urls")),
 
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
@@ -18,13 +20,14 @@ urlpatterns = [
     # User management
     path("users/", include("sim.users.urls", namespace="users")),
     path("signup/", StudentSignUpView.as_view(), name="signup"),
-    path("login/", LoginView.as_view(template_name="account/login.html", redirect_authenticated_user=True), name="login"),
+    path("login/", LoginView.as_view(), name="login"),
     path("logout/", LogoutView.as_view(next_page="/login/"), name="logout"),
 
     # Your stuff: custom urls includes go here
     path("instruments/", include('sim.instruments.urls')),
     path("lendings/", include("sim.lendings.urls", namespace="lendings")),
     path("", include("sim.core.urls")),
+    
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # API URLS

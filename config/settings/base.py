@@ -84,6 +84,7 @@ THIRD_PARTY_APPS = [
     "django_filters",
     "bootstrap3",
     "rolepermissions",
+    "django_select2",
 ]
 
 LOCAL_APPS = [
@@ -350,3 +351,4 @@ MESSAGE_TAGS = {
  }
 
 ROLEPERMISSIONS_MODULE = 'sim.users.roles'
+

@@ -130,6 +130,7 @@ main{
 .form-content{
     background-color: #3056D3;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: fit-content;

@@ -45,12 +45,8 @@ td.devolucao {
 }
 
 
-.actions{
-    color: black;
-}
-.actions a{
-    color: black;
-}
+
+
 
 td.instrumentos {
     color: black;
@@ -62,8 +58,13 @@ td.instrumentos {
     align-items: center;
     text-align: center;
     margin-top: 125px;
+    border-radius: 24px;
 }
-
+.delete-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .page-buttons {
     margin-top: 20px;
@@ -120,4 +121,14 @@ td{
 table a{
     color: blue;
     text-align: center;
+}
+#edit-return-button i{
+    font-weight: bold;
+    font-size: 24px;
+}
+
+
+
+.actions i{
+    color: black;
 }

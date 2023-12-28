@@ -38,6 +38,8 @@
     <!-- place project specific Javascript in this file -->  
     <script defer src="{% static 'js/project.js' %}"></script>
     <script defer src="{% static 'js/main.js' %}"></script>
+    <script defer src="{% static 'js/message.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     {% endblock javascript %}
 
 </head>
@@ -54,14 +56,14 @@
       </a>
     </div>
     <nav class="side-item">
-      <div class="nav-title">
+      <a href="{% url 'home' %}" class="nav-title">
         <div>
           <i class="bi bi-columns-gap"></i>
         </div>
         <div>
-          <p>Menu</p>
+          <p>Dashboard</p>
         </div>
-      </div>
+      </a>
       <div class="nav-items">
         <ul class="navbar-items">
           <li>
@@ -97,14 +99,14 @@
           {% for group in request.user.groups.all %}
           {% if group.name == 'professor' or group.name == 'colleger' %}
           <li class="item-menu">
-            <a href="#" class="item-menu-link">
-                  <i class="bi bi-repeat"></i>
-                  <Span>Devoluções</Span>
-                  <i class="bi bi-caret-down-fill arrow-sub-menu"></i>
+            <a class="nav-link" href="{% url 'lendings:returns' %}">
+              <div>
+                <i class="bi bi-repeat"></i>
+              </div>
+              <span>
+                Devoluções
+              </span>
             </a>
-            <ul class="sub-menu">
-              <a href="{% url 'lendings:returns' %}">Solicitações</a>
-            </ul>
           </li>
           <li class="item-menu">
             <a href="#" class="item-menu-link">
@@ -128,7 +130,7 @@
       <div class="nav-items side-item">
         <ul>
           <li>
-            {% if request.user.groups.all.0.name == "student" %}
+            {% if request.user.groups.all.0.name == "student" or  request.user.groups.all.1.name == "colleger" %}
               <a class="nav-link" href="{% url 'users:studentUpdate' %}">
             {% else %}
             <a class="nav-link" href="{% url 'users:professorUpdate' %}">
@@ -157,8 +159,12 @@
       </h1>
     </div>
     <div class="user">
-      <div id="bell">
-        <img src="{% static '\images\icons\bell.png' %}" alt="">
+      <div id="profile">
+        {% if request.user.groups.all.0.name == 'student' or request.user.groups.all.0.name == 'colleger' %}
+        <img src="{{ request.user.StudentUser.photo.url }}" alt="profileIcon">
+        {% else %}
+        <img src="{{ request.user.ProfessorUser.photo.url }}" alt="profileIcon">
+        {% endif %}
       </div>
       <div class="name">
         <span><p id="username">{{ request.user.username }}</p></span>
@@ -175,21 +181,14 @@
           {% endif %}
         {% endfor %}
       </div>
-      <div id="profile">
-            {% if request.user.groups.all.0.name == 'student' %}
-            <img src="{{ request.user.StudentUser.photo.url }}" alt="profileIcon">
-            {% else %}
-            <img src="{{ request.user.ProfessorUser.photo.url }}" alt="profileIcon">
-            {% endif %}
-        </div>
       </div>
   </div>
   <main>
+    <div class="container">
       {% include '_messages.html' %}
-      <div class="container mb-4">
-        {% block content %}
-        {% endblock content %}
-      </div>
+      {% block content %}
+      {% endblock content %}
+    </div>
     {% comment %} <footer>
       <div class="copyright">
         <p>2023© SIM</p>

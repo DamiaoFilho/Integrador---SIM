@@ -20,7 +20,7 @@ Empréstimos - Solicitações
 {% block content %}
 {{ block.super }}
 
-    {% include "lendings/_list_buttons.html" %}
+    {% include "lendings/buttons/_lendings_buttons.html" %}
     <div class="center-content">
         
         
@@ -31,7 +31,14 @@ Empréstimos - Solicitações
                 <td class="instrumentos">Instrumento</td>
                 <td class="instrumentos">Início</td>
                 <td class="instrumentos">Fim</td>
+                {% for group in request.user.groups.all %}
+                {% if group.name == "professor" %}
                 <td class="actions">Ações</td>
+                {% endif %}
+                {% if group.name == "colleger" %}
+                <td class="actions">Ações</td>
+                {% endif %}
+                {% endfor %}
             </tr>
             {% for obj in object_list %}
             <tr>
@@ -40,10 +47,23 @@ Empréstimos - Solicitações
                 <td class="instrumentos">{{ obj.instrument }}</td>
                 <td class="instrumentos">{{ obj.initDate }}</td>
                 <td class="instrumentos">{{ obj.finalDate }}</td>
-                <td class="actions">
-                    {% include "lendings/_analysis_modal.html" %}
+                {% for group in request.user.groups.all %}
+                {% if group.name == "professor" %}
+                <td class="actions action-link">
+                    <a href="{% url 'lendings:analysis' obj.pk %}">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
                 </td>
+                {% endif %}
+                {% if group.name == "colleger" %}
+                <td class="actions action-link">
+                    <a href="{% url 'lendings:analysis' obj.pk %}">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                </td>
+                {% endif %}
             </tr>
+            {% endfor %}
             {% endfor %}
         </table>
 

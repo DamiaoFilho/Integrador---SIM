@@ -3,6 +3,7 @@
 {% block css %}
 {{ block.super }}
 <link rel="stylesheet" href="{% static 'lendings/lendings_list.css' %}">
+<link rel="stylesheet" href="{% static 'lendings/solicitation_detail.css' %}">
 {% endblock %}
 
 {% block addLink %}
@@ -19,7 +20,7 @@ Empréstimos - Em Andamento
 {% block content %}
 {{ block.super }}
 
-    {% include "lendings/_list_buttons.html" %}
+    {% include "lendings/buttons/_lendings_buttons.html" %}
     <div class="center-content">
         
         
@@ -30,7 +31,14 @@ Empréstimos - Em Andamento
                 <td class="instrumentos">Instrumento</td>
                 <td class="instrumentos">Início</td>
                 <td class="instrumentos">Fim</td>
-                <td class="actions">Ações</td>
+                {% for group in request.user.groups.all %}
+                {% if group.name == "professor" %}
+                    <td class="actions">Ações</td>
+                {% endif %}
+                {% if group.name == "colleger" %}
+                    <td class="actions">Ações</td>
+                {% endif %}
+                {% endfor %}
             </tr>
             {% for obj in object_list %}
             <tr>
@@ -39,9 +47,22 @@ Empréstimos - Em Andamento
                 <td class="instrumentos">{{ obj.instrument }}</td>
                 <td class="instrumentos">{{ obj.initDate }}</td>
                 <td class="instrumentos">{{ obj.finalDate }}</td>
-                <td class="actions">
-                    {% include "lendings/_lending_modal.html" %}
-                </td>
+                {% for group in request.user.groups.all %}
+                {% if group.name == "professor" %}
+                    <td class="actions action-link">
+                        <a href="{% url 'lendings:detail' obj.pk %}">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    </td>
+                {% endif %}
+                {% if group.name == "colleger" %}
+                    <td class="actions action-link">
+                        <a href="{% url 'lendings:detail' obj.pk %}">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    </td>
+                {% endif %}
+                {% endfor %}
             </tr>
             {% endfor %}
         </table>
@@ -50,7 +71,6 @@ Empréstimos - Em Andamento
             <!-- Crie botões de página conforme necessário -->
         </div>
     </div>
-
     <div class="row pagination">
         <div class="pagination-items">
             {% if page_obj.has_previous %}

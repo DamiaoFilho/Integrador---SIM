@@ -1,0 +1,9 @@
+{% extends 'lendings/lending_detail.html' %}
+
+
+
+{% block accept-buttons %}
+<a class="btn btn-secondary" href="{% url 'lendings:requests' %}" role="button">Voltar</a>
+<a class="btn btn-danger" href="{% url 'lendings:denied' object.pk %}" role="button">Recusar</a>
+<a class="btn btn-success" href="{% url 'lendings:accept' object.pk %}" role="button">Aceitar</a>
+{% endblock %}

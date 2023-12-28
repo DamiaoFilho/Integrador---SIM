@@ -36,6 +36,8 @@ Instrumentos
                 </div>
                 <div class="card-brand">
                     <p>Marca: {{ obj.brand }}</p>
+                    <p>Modelo: {{ obj.model }}</p>
+                    <p>Cor: {{ obj.color }}</p>
                 </div>
                 {% if obj.status %}
                 <div class="card-status status-avaible">
@@ -119,7 +121,7 @@ Instrumentos
                         {% endif %}
                         {% if group.name == "student"%}
                         {% if obj.status == True %}
-                        <a href="{% url 'lendings:create' obj.pk %}">
+                        <a id="lend-link" href="{% url 'lendings:create' obj.pk %}">
                             <div class="card-button lend">
                                 <p>Empréstimo</p>
                             </div>

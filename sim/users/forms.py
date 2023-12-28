@@ -3,6 +3,7 @@ from allauth.socialaccount.forms import SignupForm as SocialSignupForm
 from django.contrib.auth import forms as admin_forms
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
+from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Column, Layout, Row, Fieldset
 from django import forms
 User = get_user_model()
@@ -39,6 +40,8 @@ class UserSignupForm(SignupForm):
     Check UserSocialSignupForm for accounts created from social.
     """
 
+    
+
 
 class UserSocialSignupForm(SocialSignupForm):
     """
@@ -68,13 +71,33 @@ class StudentUserForm(MultiModelForm):
 class StudentUpdateForm(forms.ModelForm):
     class Meta:
         model = Student
-        exclude = ["register", "user", "is_colleger", "has_penalty"]
+        exclude = ["register", "user", "is_colleger", "has_penalty", "penalty_end"]
+
+
 
 class StudentMultiUpdateForm(MultiModelForm):
     form_classes = {
         "student": StudentUpdateForm,
         "user": UserForm,
     }
+
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.helper = FormHelper()
+    #     self.helper.layout = Layout(
+    #     Row(
+    #         Column("student-photo", css_class="col-sm-12 col-md-12"),
+    #     ),
+    #     Row(
+    #         Column("student-register", css_class="col-sm-12 col-md-6"),
+    #         Column("phone", css_class="col-sm-12 col-md-6"),
+    #     ),
+    #     Row(
+    #         Column("year", css_class="col-sm-12 col-md-4"),
+    #         Column("course", css_class="col-sm-12 col-md-4"),
+    #         Column("shift", css_class="col-sm-12 col-md-4"),
+    #     ),
+    #     )
 
 class ProfessorUpdateForm(forms.ModelForm):
     class Meta:
@@ -93,4 +116,3 @@ class ProfessorSignUpForm(MultiModelForm):
         "professor": ProfessorUpdateForm,
         "user": UserSignupForm
     }
-     

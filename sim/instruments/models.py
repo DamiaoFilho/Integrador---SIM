@@ -22,8 +22,8 @@ class Instrument(models.Model):
     color = models.CharField(verbose_name="Cor")
     condition = models.TextField(verbose_name="Condição")
     status = models.BooleanField(default=True, verbose_name="Disponibilidade")
-    category = models.ManyToManyField(Category, verbose_name="Categoria")
-    type = models.ManyToManyField("InstrumentType", verbose_name="Tipo")
+    category = models.ManyToManyField(Category, verbose_name="Categoria", blank=True)
+    type = models.ManyToManyField("InstrumentType", verbose_name="Tipo", blank=True)
 
     def __str__(self) -> str:
         return self.name

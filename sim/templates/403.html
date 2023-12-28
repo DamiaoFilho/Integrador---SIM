@@ -1,13 +1,47 @@
 {% extends "base.html" %}
 
 {% block title %}Forbidden (403){% endblock title %}
+
+{% block page_name %}Acesso Negado{% endblock %}
+
 {% block content %}
-  <h1>Forbidden (403)</h1>
-  <p>
-    {% if exception %}
-      {{ exception }}
-    {% else %}
-      You're not allowed to access this page.
-    {% endif %}
-  </p>
+{% load static %}
+
+  <div class="forbidden-content">
+    <section>
+      <h1>  Forbidden (403)</h1>
+      <p>
+        {% if exception %}
+          {{ exception }}
+        {% else %}
+          Você não tem permissão para acessar essa página
+        {% endif %}
+      </p>
+    </section>
+    <section>
+      <img src="{% static 'images/icons/403.jpg' %}" alt="">
+    </section>
+  </div>
+  <style>
+    .forbidden-content{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  
+    .forbidden-content p{
+      color: black;
+    }
+    .forbidden-content h1{
+      color: black;
+      text-align: center;
+    }
+    .forbidden-content img{
+      width: 800px;
+      height: 800px;
+    }
+  </style>
 {% endblock content %}
+
+

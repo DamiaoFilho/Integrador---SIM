@@ -24,14 +24,17 @@ class LendingFilter(django_filters.FilterSet):
 
     class Meta:
         model = Lending
-        fields = ["student__user__username", "student", "initDate"]
+        fields = ["student__user__username", "initDate"]
 
-class LendingFilter(django_filters.FilterSet):
+
+
+
+class LendingStudentFilter(django_filters.FilterSet):
     student__user__username = django_filters.CharFilter(lookup_expr='icontains', label='Aluno')
 
     class Meta:
         model = Lending
-        fields = ["student__user__username", "student", "initDate"]
+        fields = ["student__user__username", "initDate", "status"]
 
 
 class ReturnFilter(django_filters.FilterSet):
